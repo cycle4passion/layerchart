@@ -71,7 +71,7 @@
 		<div class="flex items-center gap-2 mb-2">
 			{#if catalog.examples?.length}
 				<Button
-					href="/docs/{page.params.type}/{page.params.name}/examples{filterQuery
+					href="/docs/components/{page.params.name}/examples{filterQuery
 						? `?filter=${filterQuery}`
 						: ''}"
 				>

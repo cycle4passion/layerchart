@@ -15,10 +15,7 @@ export const load = async ({ params, parent }) => {
 		import: 'default'
 	});
 
-	const { PageComponent, metadata } = await getMarkdownComponent(
-		params.type as 'components' | 'examples',
-		params.name
-	);
+	const { PageComponent, metadata } = await getMarkdownComponent('components', params.name);
 
 	// Load the catalog file for the current component
 	const catalogPath = `/src/examples/catalog/${params.name}.json`;
@@ -38,19 +35,17 @@ export const load = async ({ params, parent }) => {
 	// Page examples take precedence
 	const examples = { ...parentData.examples, ...pageExamples };
 
-	// Load component API if this is a component page
+	// Load component API
 	let api: ComponentAPI | null = null;
-	if (params.type === 'components') {
-		const apiPath = `/src/generated/api/${params.name}.json`;
-		if (allAPIs[apiPath]) {
-			try {
-				api = (await allAPIs[apiPath]()) as ComponentAPI;
-			} catch (error) {
-				console.warn(`Failed to load API file for component: ${params.name}`, error);
-			}
-		} else {
-			console.warn(`No API file found for component: ${params.name}`);
+	const apiPath = `/src/generated/api/${params.name}.json`;
+	if (allAPIs[apiPath]) {
+		try {
+			api = (await allAPIs[apiPath]()) as ComponentAPI;
+		} catch (error) {
+			console.warn(`Failed to load API file for component: ${params.name}`, error);
 		}
+	} else {
+		console.warn(`No API file found for component: ${params.name}`);
 	}
 
 	return {

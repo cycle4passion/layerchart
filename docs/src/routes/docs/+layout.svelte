@@ -40,7 +40,7 @@
 	let { data, children } = $props();
 
 	// Set examples context for all /docs pages
-	// Child layouts (like docs/[type]/[name]) can override with merged data
+	// Child layouts (like docs/components/[name]) can override with merged data
 	const examplesContext = {
 		get current() {
 			return data.examples;

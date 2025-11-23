@@ -30,11 +30,11 @@
 
 <div class="mb-4">
 	<!-- Show back if viewing individual example or all component examples -->
-	{#if page.params.example || page.route.id == '/docs/[type]/[name]/examples'}
+	{#if page.params.example || page.route.id == '/docs/components/[name]/examples'}
 		<Button
 			size="sm"
 			icon={LucideChevronLeft}
-			href="/docs/{page.params.type}/{page.params.name}"
+			href="/docs/components/{page.params.name}"
 			class="mb-4 border"
 		>
 			Back to {page.params.name}
@@ -48,7 +48,7 @@
 
 		{#if page.params.example}
 			<LucideChevronRight class="text-sm opacity-25" />
-			<a href="/docs/{page.params.type}/{page.params.name}" class="text-primary">{metadata.name}</a>
+			<a href="/docs/components/{page.params.name}" class="text-primary">{metadata.name}</a>
 		{/if}
 	</div>
 
