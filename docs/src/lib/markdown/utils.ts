@@ -13,14 +13,10 @@ import type { ComponentCatalog } from '$examples/catalog/types.js';
 
 /**
  * Get markdown document component and metadata (frontmatter)
- * @param type
  * @param slug
  * @returns
  */
-export async function getMarkdownComponent(
-	type: 'components' | 'examples',
-	slug: string = 'index'
-) {
+export async function getMarkdownComponent(slug: string = 'index') {
 	const modules = import.meta.glob<{
 		default: Component;
 		metadata: ComponentMetadata | ExampleMetadata;
@@ -28,13 +24,13 @@ export async function getMarkdownComponent(
 
 	let doc: Awaited<ReturnType<(typeof modules)[string]>> | null = null;
 	for (const [path, resolver] of Object.entries(modules)) {
-		if (path === `/src/content/${type}/${slug}.md`) {
+		if (path === `/src/content/components/${slug}.md`) {
 			doc = await resolver();
 			break;
 		}
 	}
 
-	const metadata = getMetadata(type, slug);
+	const metadata = getMetadata(slug);
 
 	if (!doc || !metadata) {
 		error(404, 'Could not find the document.');
@@ -49,15 +45,8 @@ export async function getMarkdownComponent(
 /**
  * Get full metadata (authored frontmatter + content-collection transformed)
  */
-function getMetadata<T extends 'components' | 'examples'>(
-	type: T,
-	slug: string
-): T extends 'components' ? ComponentMetadata : ExampleMetadata {
-	return (
-		type === 'components'
-			? allComponents.find((c) => c.slug === slug)
-			: allExamples.find((e) => e.slug === slug)
-	) as any;
+function getMetadata(slug: string): ComponentMetadata {
+	return allComponents.find((c) => c.slug === slug) as any;
 }
 
 /**

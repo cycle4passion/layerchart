@@ -15,7 +15,7 @@ export const load = async ({ params, parent }) => {
 		import: 'default'
 	});
 
-	const { PageComponent, metadata } = await getMarkdownComponent('components', params.name);
+	const { PageComponent, metadata } = await getMarkdownComponent(params.name);
 
 	// Load the catalog file for the current component
 	const catalogPath = `/src/examples/catalog/${params.name}.json`;
