@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { BarChart, Tooltip } from 'layerchart';
 	import { createDateSeries } from '$lib/utils/data.js';
+	import { format } from '@layerstack/utils';
 
 	const data = createDateSeries({ count: 30, min: 20, max: 100 });
 	export { data };
@@ -26,7 +27,7 @@
 				{#snippet children({ data })}
 					<Tooltip.Header value={data.date} format="day" />
 					<Tooltip.List>
-						<Tooltip.Item label="value" value={data.value} />
+						<Tooltip.Item label="value" value={format(data.value, 'decimal')} />
 					</Tooltip.List>
 				{/snippet}
 			</Tooltip.Root>
