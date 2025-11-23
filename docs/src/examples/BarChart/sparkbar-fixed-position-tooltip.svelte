@@ -32,7 +32,7 @@
 					{format(data.date, 'day')}
 				</div>
 				<div class="font-semibold">
-					{data.value}
+					{format(data.value, 'decimal')}
 				</div>
 			{/snippet}
 		</Tooltip.Root>
