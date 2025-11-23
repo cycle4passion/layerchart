@@ -35,6 +35,7 @@
 	y="age"
 	orientation="horizontal"
 	padding={{ left: 32, bottom: 16 }}
+	xPadding={[5, 5]}
 	labels={{ format: (value) => format(Math.abs(value), 'metric') }}
 	props={{
 		xAxis: { format: (value) => format(Math.abs(value), 'metric') }
