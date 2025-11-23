@@ -53,8 +53,8 @@
 	cDomain={colorKeys}
 	cRange={keyColors}
 	x1={groupBy}
-	x1Scale={groupBy ? scaleBand().padding(0.1) : null}
-	x1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : null}
+	x1Scale={groupBy ? scaleBand().padding(0.1) : undefined}
+	x1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : undefined}
 	x1Range={({ xScale }) => [0, xScale.bandwidth()]}
 	padding={{ left: 32, bottom: 20, top: 8 }}
 	height={300}
