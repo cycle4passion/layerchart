@@ -35,6 +35,7 @@
 	y="age"
 	orientation="horizontal"
 	padding={{ left: 32, bottom: 16 }}
+	xPadding={[50, 50]}
 	labels={{ format: (value) => format(Math.abs(value), 'percent') }}
 	props={{
 		xAxis: { format: (value) => format(Math.abs(value), 'percentRound') }
