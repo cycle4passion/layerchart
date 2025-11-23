@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { BarChart } from 'layerchart';
+	import { BarChart, Tooltip, Layer, Axis, Bars, Highlight } from 'layerchart';
+	import { format } from '@layerstack/utils';
 	import { createDateSeries } from '$lib/utils/data.js';
 
 	const data = createDateSeries({
@@ -15,9 +16,20 @@
 
 <BarChart {data} x="date" y="value" height={300}>
 	{#snippet children({ context })}
-		<g>
-			<!-- Custom chart implementation would go here -->
-			<text x="50" y="50" class="text-sm fill-surface-content">Custom Chart Implementation</text>
-		</g>
+		<Layer>
+			<Axis placement="left" grid rule />
+			<Axis placement="bottom" rule />
+			<Bars radius={4} strokeWidth={1} class="fill-primary" />
+			<Highlight area />
+		</Layer>
+
+		<Tooltip.Root>
+			{#snippet children({ data })}
+				<Tooltip.Header>{format(context.x(data))}</Tooltip.Header>
+				<Tooltip.List>
+					<Tooltip.Item label="value" value={context.y(data)} />
+				</Tooltip.List>
+			{/snippet}
+		</Tooltip.Root>
 	{/snippet}
 </BarChart>
