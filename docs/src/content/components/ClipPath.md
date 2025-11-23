@@ -9,6 +9,7 @@ related:
     components/RectClipPath,
     components/Threshold
   ]
+order: 1
 ---
 
 <script lang="ts">

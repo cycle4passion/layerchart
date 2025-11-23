@@ -4,6 +4,7 @@ category: charts
 layers: [svg, canvas, html]
 related:
   [ArcChart, AreaChart, BarChart, LineChart, PieChart, ScatterChart, TooltipContext, GeoContext]
+order: 1
 ---
 
 <script lang="ts">

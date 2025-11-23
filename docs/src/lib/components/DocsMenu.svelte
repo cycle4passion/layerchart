@@ -90,7 +90,17 @@
 			<div class="mb-6">
 				<h3 class="text-surface-content/80 mb-3 text-sm font-medium capitalize">{category}</h3>
 				<div class="border-l border-surface-content/10">
-					{#each components.sort(sortFunc('name')) as component}
+					{#each components.sort((a, b) => {
+						// If both have order, sort by order
+						if (a.order !== undefined && b.order !== undefined) {
+							return a.order - b.order;
+						}
+						// Items with order come first
+						if (a.order !== undefined) return -1;
+						if (b.order !== undefined) return 1;
+						// Both without order, sort alphabetically by name
+						return a.name.localeCompare(b.name);
+					}) as component}
 						{@render navItem({ label: component.name, path: `/docs/components/${component.slug}` })}
 					{/each}
 				</div>

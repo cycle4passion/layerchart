@@ -3,6 +3,7 @@ description: Geographic component which provides geographic projection and scali
 category: geo
 layers: [svg, canvas]
 related: [Chart]
+order: 1
 ---
 
 <script lang="ts">
