@@ -42,7 +42,7 @@ Lastly, looking through the large collection of [examples](/docs/examples).
 
 ## CSS variables
 
-Out of the box LayerChart will use `currentColor` as the default color, but you can custimize globally with a few CSS variables.
+Out of the box LayerChart will use `currentColor` as the default color, but you can customize globally with a few CSS variables.
 
 ```css
 .lc-root-container {
