@@ -13,6 +13,40 @@ related: [Chart, Spline]
 
 <Example name="basic" showCode />
 
+### Performance Wide Data
+
+> Wide data (property per series)
+
+<Example name="perf-wide-data" />
+
+### Performance Wide Data Processed
+
+> Wide data (property per series). Pre-processed before passed to LineChart
+
+<Example name="perf-wide-data-processed" />
+
+### Performance Series Arrays
+
+> Array per series, each with `x` / `y` items
+
+<Example name="perf-series-arrays" />
+
+### Performance Dimension Arrays
+
+> Individual arrays per dimension, similar to uplot
+
+<Example name="perf-dimension-arrays" />
+
+### Performance Dimension Arrays Processed
+
+> Individual arrays per dimension, similar to uplot. Pre-processed before passed to LineChart
+
+<Example name="perf-dimension-arrays-processed" />
+
+### Performance Streaming
+
+<Example name="perf-streaming" />
+
 <!-- ## Examples
 
 ### Basic
