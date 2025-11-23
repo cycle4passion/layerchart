@@ -17,6 +17,7 @@
 
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
+	import { examples } from '$lib/context.js';
 	import DocsMenu from '$lib/components/DocsMenu.svelte';
 	import favicon from '$lib/assets/favicon.svg';
 
@@ -37,6 +38,15 @@
 	import CustomDiscord from '~icons/custom-brands/discord';
 
 	let { data, children } = $props();
+
+	// Set examples context for all /docs pages
+	// Child layouts (like docs/[type]/[name]) can override with merged data
+	const examplesContext = {
+		get current() {
+			return data.examples;
+		}
+	};
+	examples.set(examplesContext);
 
 	let searchQuery = $state('');
 

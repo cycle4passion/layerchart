@@ -14,4 +14,20 @@ export const load = async () => {
 			capture_pageleave: false
 		});
 	}
+
+	// Only provide the glob imports - don't load anything yet
+	// Child layouts will load only what they need
+	const allExamples = import.meta.glob('/src/examples/**/*', {
+		import: 'default'
+	});
+
+	const allSources = import.meta.glob('/src/examples/**/*', {
+		import: 'default',
+		query: '?raw'
+	});
+
+	return {
+		allExamples,
+		allSources
+	};
 };

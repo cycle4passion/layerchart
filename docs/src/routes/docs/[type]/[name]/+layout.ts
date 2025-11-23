@@ -1,18 +1,11 @@
-import type { Component } from 'svelte';
-import type { Examples } from '$lib/types.js';
 import type { ComponentAPI } from '$lib/api-types.js';
 import type { ComponentCatalog } from '$examples/catalog/types.js';
-import { getMarkdownComponent } from '$lib/markdown/utils.js';
+import { getMarkdownComponent, loadExamplesFromMarkdown } from '$lib/markdown/utils.js';
 
-export const load = async ({ params }) => {
-	const allExamples = import.meta.glob('/src/examples/**/*', {
-		import: 'default'
-	});
-
-	const allSources = import.meta.glob('/src/examples/**/*', {
-		import: 'default',
-		query: '?raw'
-	});
+export const load = async ({ params, parent }) => {
+	// Get allExamples, allSources, and examples from parent layout
+	const parentData = await parent();
+	const { allExamples, allSources } = parentData;
 
 	const allAPIs = import.meta.glob('/src/generated/api/*.json', {
 		import: 'default'
@@ -32,41 +25,18 @@ export const load = async ({ params }) => {
 	const catalog: ComponentCatalog | null =
 		catalogPath in allCatalogs ? ((await allCatalogs[catalogPath]()) as ComponentCatalog) : null;
 
-	// Extract all <Example component="..." name="..."> from markdown page
-	const regex = /<Example\s+([^>]*?)\/>/g;
-	const matches = [...metadata.content.matchAll(regex)];
-	const pageExamples = matches.map((match) => {
-		const attrs = match[1];
-		const component = attrs.match(/component="([^"]*?)"/)?.[1] || params.name; // use page component name if not explicit (ex. <Example name="basic" />);
-		const name = attrs.match(/name="([^"]*?)"/)?.[1] || null;
-		return { component, name };
-	});
+	// Load examples from markdown content and catalog
+	const pageExamples = await loadExamplesFromMarkdown(
+		metadata.content,
+		catalog,
+		allExamples,
+		allSources,
+		params.name // default component for implicit <Example name="..." /> usage
+	);
 
-	const examples: Examples = {};
-	for (const path in allExamples) {
-		if (
-			catalog?.examples.some(
-				(example) => path === `/src/examples/${catalog.component}/${example.name}.svelte`
-			) ||
-			pageExamples.some(
-				(example) => path === `/src/examples/${example.component}/${example.name}.svelte`
-			)
-		) {
-			const component = (await allExamples[path]()) as Component;
-			const source = (await allSources[path]()) as string;
-			const [_, __, ___, componentName, filename] = path.split('/');
-			const name = filename.replace('.svelte', '');
-
-			// Remove `export { data };`
-			// TODO: Also remove blank lines left behind
-			const cleanupSource = source.replace(/^.*export .*;.*$/gm, '');
-
-			if (!examples[componentName]) {
-				examples[componentName] = {};
-			}
-			examples[componentName][name] = { component, source: cleanupSource };
-		}
-	}
+	// Merge with parent examples (from /docs layout)
+	// Page examples take precedence
+	const examples = { ...parentData.examples, ...pageExamples };
 
 	// Load component API if this is a component page
 	let api: ComponentAPI | null = null;

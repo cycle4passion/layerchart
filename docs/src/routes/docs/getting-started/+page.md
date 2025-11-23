@@ -36,18 +36,7 @@ pnpm install layerchart
 
 then import the components from `layerchart`:
 
-```svelte
-<script lang="ts">
-	import { LineChart } from 'layerchart';
-	import { createDateSeries } from '$lib/utils/data.js';
-
-	const data = createDateSeries({ count: 30, min: 50, max: 100, value: 'integer' });
-</script>
-
-<LineChart {data} x="date" y="value" height={300} />
-```
-
-<!-- <Example component="LineChart" example="basic" /> -->
+<Example component="LineChart" name="basic" showCode />
 
 Lastly, looking through the large collection of [examples](/docs/examples).
 
