@@ -12,3 +12,15 @@ related: [Chart]
 ## Playground
 
 <Example name="projection-playground" />
+
+## Geojson Preview
+
+<Example name="geojson-preview" />
+
+## Topojson Preview
+
+<Example name="topojson-preview" />
+
+## Shapefile Preview
+
+<Example name="shapefile-preview" />
