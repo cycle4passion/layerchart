@@ -26,7 +26,8 @@
 			tickLabelProps: {
 				textAnchor: 'start',
 				dx: 6,
-				class: 'fill-surface-300 stroke-none'
+				dy: 2,
+				class: 'text-sm fill-surface-300 stroke-none'
 			},
 			tickLength: 0
 		}
