@@ -17,10 +17,22 @@
 	let chartMode = $state<'group' | 'stack' | 'groupStack'>('group');
 
 	const groupBy = $derived(
-		chartMode === 'group' ? 'fruit' : chartMode === 'groupStack' ? 'basket' : undefined
+		(
+			{
+				group: 'fruit',
+				stack: undefined,
+				groupStack: 'basket'
+			} as const
+		)[chartMode]
 	);
 	const stackBy = $derived(
-		chartMode === 'stack' || chartMode === 'groupStack' ? 'fruit' : undefined
+		(
+			{
+				group: undefined,
+				stack: 'fruit',
+				groupStack: 'fruit'
+			} as const
+		)[chartMode]
 	);
 
 	const data = $derived(
