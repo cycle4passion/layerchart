@@ -20,7 +20,7 @@
       "example": "horizontal-stagger-tween-on-mount",
       "component": "Bars",
       "path": "/example/Bars/horizontal-stagger-tween-on-mount",
-      "lineNumber": 37,
+      "lineNumber": 38,
       "line": "<Bar"
     },
     {
@@ -41,30 +41,30 @@
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 75,
+      "lineNumber": 69,
       "line": "<Bar"
     },
     {
       "example": "vertical-stagger-tween-on-mount",
       "component": "Bars",
       "path": "/example/Bars/vertical-stagger-tween-on-mount",
-      "lineNumber": 39,
+      "lineNumber": 35,
       "line": "<Bar"
     },
     {
       "example": "vertical-stagger-tween-on-mount-rounded-edge",
       "component": "Bars",
       "path": "/example/Bars/vertical-stagger-tween-on-mount-rounded-edge",
-      "lineNumber": 39,
+      "lineNumber": 35,
       "line": "<Bar"
     },
     {
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 74,
+      "lineNumber": 69,
       "line": "<Bar"
     }
   ],
-  "updatedAt": "2025-11-10T21:19:02.825Z"
+  "updatedAt": "2025-11-23T01:49:01.764Z"
 }

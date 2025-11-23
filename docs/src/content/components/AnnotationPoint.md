@@ -1,6 +1,6 @@
 ---
 description: Annotation component marking a specific data value or coordinate on a chart to highlight key events or notable points.
-section: annotations
+category: annotations
 layers: [svg, canvas, html]
 related: [AnnotationLine, AnnotationRange]
 ---

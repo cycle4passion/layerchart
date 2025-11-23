@@ -1,6 +1,6 @@
 ---
 description: Fill component which provides a radial gradient fill pattern for  chart elements.
-section: fill
+category: fill
 layers: [svg]
 related: [LinearGradient, Pattern]
 ---

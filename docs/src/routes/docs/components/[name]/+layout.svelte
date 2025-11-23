@@ -43,7 +43,7 @@
 
 	<div class="flex items-center gap-2 text-xs font-bold">
 		<div class="text-surface-content/50 capitalize">
-			{metadata.section}
+			{metadata.category}
 		</div>
 
 		{#if page.params.example}

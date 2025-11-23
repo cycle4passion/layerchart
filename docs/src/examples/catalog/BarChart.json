@@ -420,12 +420,12 @@
       "components": [
         {
           "component": "BarChart",
-          "lineNumber": 44,
+          "lineNumber": 36,
           "line": "<BarChart"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 57,
+          "lineNumber": 49,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -436,12 +436,12 @@
       "components": [
         {
           "component": "BarChart",
-          "lineNumber": 59,
+          "lineNumber": 42,
           "line": "<BarChart"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 77,
+          "lineNumber": 60,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -468,12 +468,12 @@
       "components": [
         {
           "component": "BarChart",
-          "lineNumber": 14,
+          "lineNumber": 19,
           "line": "<BarChart"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 27,
+          "lineNumber": 32,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -588,17 +588,17 @@
       "components": [
         {
           "component": "BarChart",
-          "lineNumber": 125,
+          "lineNumber": 97,
           "line": "<BarChart"
         },
         {
           "component": "LinearGradient",
-          "lineNumber": 142,
+          "lineNumber": 114,
           "line": "<LinearGradient"
         },
         {
           "component": "Bars",
-          "lineNumber": 148,
+          "lineNumber": 120,
           "line": "<Bars radius={1} fill={gradient} />"
         }
       ]
@@ -1332,14 +1332,14 @@
       "example": "histogram-date-time-count",
       "component": "BarChart",
       "path": "/example/BarChart/histogram-date-time-count",
-      "lineNumber": 44,
+      "lineNumber": 36,
       "line": "<BarChart"
     },
     {
       "example": "histogram-date-time-interval",
       "component": "BarChart",
       "path": "/example/BarChart/histogram-date-time-interval",
-      "lineNumber": 59,
+      "lineNumber": 42,
       "line": "<BarChart"
     },
     {
@@ -1353,7 +1353,7 @@
       "example": "histogram-random-distribution",
       "component": "BarChart",
       "path": "/example/BarChart/histogram-random-distribution",
-      "lineNumber": 14,
+      "lineNumber": 19,
       "line": "<BarChart"
     },
     {
@@ -1423,7 +1423,7 @@
       "example": "oscilloscope-frequency",
       "component": "BarChart",
       "path": "/example/BarChart/oscilloscope-frequency",
-      "lineNumber": 125,
+      "lineNumber": 97,
       "line": "<BarChart"
     },
     {
@@ -1742,5 +1742,5 @@
       "line": "<BarChart"
     }
   ],
-  "updatedAt": "2025-11-14T14:39:04.524Z"
+  "updatedAt": "2025-11-23T01:49:01.790Z"
 }

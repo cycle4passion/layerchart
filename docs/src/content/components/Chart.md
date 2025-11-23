@@ -1,6 +1,6 @@
 ---
 description: Base component providing chart dimensions and contexts such as TooltipContext, GeoContext, and TransformContext. See also simplified charts such as AreaChart and BarChart for streamlined implementations.
-section: charts
+category: charts
 layers: [svg, canvas, html]
 related:
   [ArcChart, AreaChart, BarChart, LineChart, PieChart, ScatterChart, TooltipContext, GeoContext]

@@ -63,7 +63,3 @@ Example use cases
 ## Text
 
 - Rotate, along arc, word wrapping, truncation, scale to fit
-
-Primarily focuses on application and data exploration use cases
-
-https://bsky.app/profile/techniq.dev/post/3looljuqjns2u

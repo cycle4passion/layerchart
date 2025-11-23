@@ -18,7 +18,7 @@
 
 	export const schema = z.object({
 		filter: z.string().nullable().default(null),
-		section: z.string().nullable().default(null)
+		category: z.string().nullable().default(null)
 	});
 	let params = useSearchParams(schema);
 
@@ -27,12 +27,12 @@
 	let visibleExamples = $derived.by(() => {
 		let filtered = data.components;
 
-		// Filter by selected section (component or section)
-		if (params.section) {
-			const selected = params.section.toLowerCase();
+		// Filter by selected category (component or category)
+		if (params.category) {
+			const selected = params.category.toLowerCase();
 			filtered = filtered.filter(
-				({ component, section }) =>
-					component === params.section || section?.toLowerCase() === selected
+				({ component, category }) =>
+					component === params.category || category?.toLowerCase() === selected
 			);
 		}
 
@@ -58,10 +58,10 @@
 		};
 
 		return filtered
-			.map(({ component, section, examples }) => {
+			.map(({ component, category, examples }) => {
 				// If component name matches, return all examples for this component
 				if (matchesQuery(component)) {
-					return { component, section, examples };
+					return { component, category, examples };
 				}
 
 				// Otherwise, filter examples by name
@@ -69,7 +69,7 @@
 
 				// Only return component if it has matching examples
 				if (filteredExamples.length > 0) {
-					return { component, section, examples: filteredExamples };
+					return { component, category, examples: filteredExamples };
 				}
 
 				return null;
@@ -81,16 +81,16 @@
 		() => sum(visibleExamples.map(({ examples }) => examples.length)) ?? 0
 	);
 
-	// Get unique sections from components
-	let componentSections = $derived.by(() => {
-		const sections = new Set<string>();
-		data.components.forEach(({ section }) => {
-			if (section) {
-				sections.add(section);
+	// Get unique categories from components
+	let componentCategories = $derived.by(() => {
+		const categories = new Set<string>();
+		data.components.forEach(({ category }) => {
+			if (category) {
+				categories.add(category);
 			}
 		});
-		return Array.from(sections).sort(
-			sortFunc((section) =>
+		return Array.from(categories).sort(
+			sortFunc((category) =>
 				[
 					'charts',
 					'common',
@@ -104,17 +104,17 @@
 					'clipping',
 					'layers',
 					'other'
-				].indexOf(section)
+				].indexOf(category)
 			)
 		);
 	});
 
-	let sectionOptions = $derived.by(() => [
+	let categoryOptions = $derived.by(() => [
 		{ label: 'All', value: null },
-		...componentSections.map((section) => ({
-			label: section.charAt(0).toUpperCase() + section.slice(1),
-			value: section,
-			group: 'Sections'
+		...componentCategories.map((category) => ({
+			label: category.charAt(0).toUpperCase() + category.slice(1),
+			value: category,
+			group: 'Categories'
 		})),
 		...data.components.map(({ component }) => ({
 			label: component,
@@ -160,7 +160,7 @@
 	</TextField>
 
 	<div>
-		<MenuField options={sectionOptions} bind:value={params.section} />
+		<MenuField options={categoryOptions} bind:value={params.category} />
 	</div>
 
 	<div class="flex gap-2">

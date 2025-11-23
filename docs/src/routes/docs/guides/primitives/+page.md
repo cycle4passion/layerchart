@@ -2,7 +2,7 @@
   import { allComponents } from 'content-collections';
   import ComponentLink from '$lib/components/ComponentLink.svelte';
 
-  let primitiveComponents = allComponents.filter(c => c.section === 'primitives');
+  let primitiveComponents = allComponents.filter(c => c.category === 'primitives');
 </script>
 
 # Primitives

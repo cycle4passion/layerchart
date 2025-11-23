@@ -12,7 +12,7 @@ const components = defineCollection({
 	schema: z.object({
 		name: z.string().optional(),
 		description: z.string().optional(),
-		section: z.string().optional(),
+		category: z.string().optional(),
 		layers: z.array(z.string()).default([]),
 		related: z.array(z.string()).default([]),
 		resize: z.boolean().optional(),
@@ -24,7 +24,7 @@ const components = defineCollection({
 		// Read the source file from the layerchart package
 		const sourcePath = join(
 			process.cwd(),
-			`../packages/layerchart/src/lib/components/${doc.section === 'charts' ? 'charts/' : ''}${path}.svelte`
+			`../packages/layerchart/src/lib/components/${doc.category === 'charts' ? 'charts/' : ''}${path}.svelte`
 		);
 
 		let source = '';
@@ -60,7 +60,7 @@ const examples = defineCollection({
 	schema: z.object({
 		name: z.string().optional(),
 		description: z.string().optional(),
-		section: z.string().optional(),
+		category: z.string().optional(),
 		layers: z.array(z.string()).default([]),
 		related: z.array(z.string()).default([]),
 		resize: z.boolean().default(true),

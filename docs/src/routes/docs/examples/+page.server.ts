@@ -2,7 +2,7 @@ import { allComponents } from 'content-collections';
 
 interface ExampleInfo {
 	component: string;
-	section?: string;
+	category?: string;
 	examples: Array<{
 		name: string;
 		path: string;
@@ -12,11 +12,11 @@ interface ExampleInfo {
 export async function load() {
 	const exampleModules = import.meta.glob('/src/examples/**/*.svelte');
 
-	// Create a map of component names to their sections
-	const componentSectionMap = new Map<string, string>();
+	// Create a map of component names to their categories
+	const componentCategoryMap = new Map<string, string>();
 	for (const component of allComponents) {
-		if (component.section) {
-			componentSectionMap.set(component.name, component.section);
+		if (component.category) {
+			componentCategoryMap.set(component.name, component.category);
 		}
 	}
 
@@ -46,11 +46,11 @@ export async function load() {
 		});
 	}
 
-	// Convert to sorted array with section information
+	// Convert to sorted array with category information
 	const components: ExampleInfo[] = Array.from(componentMap.entries())
 		.map(([component, examples]) => ({
 			component,
-			section: componentSectionMap.get(component),
+			category: componentCategoryMap.get(component),
 			examples: examples.sort((a, b) => a.name.localeCompare(b.name))
 		}))
 		.sort((a, b) => a.component.localeCompare(b.component));

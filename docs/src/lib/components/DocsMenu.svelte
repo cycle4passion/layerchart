@@ -29,10 +29,10 @@
 		{ name: 'Styles', path: 'styles' }
 	];
 
-	const componentsBySection = flatGroup(allComponents, (d) => d.section?.toLowerCase())
-		.filter(([section]) => section !== 'examples')
+	const componentsByCategory = flatGroup(allComponents, (d) => d.category?.toLowerCase())
+		.filter(([category]) => category !== 'examples')
 		.sort(
-			sortFunc(([section]) =>
+			sortFunc(([category]) =>
 				[
 					'charts',
 					'common',
@@ -46,7 +46,7 @@
 					'clipping',
 					'layers',
 					'other'
-				].indexOf(section)
+				].indexOf(category)
 			)
 		);
 </script>
@@ -86,9 +86,9 @@
 		<h2 class="flex gap-2 items-center mb-4 text-base font-semibold capitalize">
 			<LucideBlocks class="size-4 text-surface-content/70" /> Components
 		</h2>
-		{#each componentsBySection as [section, components]}
+		{#each componentsByCategory as [category, components]}
 			<div class="mb-6">
-				<h3 class="text-surface-content/80 mb-3 text-sm font-medium capitalize">{section}</h3>
+				<h3 class="text-surface-content/80 mb-3 text-sm font-medium capitalize">{category}</h3>
 				<div class="border-l border-surface-content/10">
 					{#each components.sort(sortFunc('name')) as component}
 						{@render navItem({ label: component.name, path: `/docs/components/${component.slug}` })}

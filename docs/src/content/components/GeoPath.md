@@ -1,6 +1,6 @@
 ---
 description: Geographic component which renders shapes such as countries, states, or regions by drawing their boundaries based on coordinate data.
-section: geo
+category: geo
 layers: [svg, canvas]
 related: [Graticule]
 ---

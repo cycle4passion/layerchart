@@ -39,12 +39,12 @@
       "components": [
         {
           "component": "LineChart",
-          "lineNumber": 16,
+          "lineNumber": 17,
           "line": "<LineChart {data} x=\"date\" y=\"value\" height={300} padding={{ top: 10, bottom: 20, left: 25 }}>"
         },
         {
           "component": "AnnotationLine",
-          "lineNumber": 18,
+          "lineNumber": 19,
           "line": "<AnnotationLine"
         }
       ]
@@ -92,12 +92,12 @@
       "components": [
         {
           "component": "LineChart",
-          "lineNumber": 16,
+          "lineNumber": 17,
           "line": "<LineChart {data} x=\"date\" y=\"value\" height={300} padding={{ top: 10, bottom: 20, left: 25 }}>"
         },
         {
           "component": "AnnotationLine",
-          "lineNumber": 18,
+          "lineNumber": 19,
           "line": "<AnnotationLine"
         }
       ]
@@ -138,7 +138,7 @@
       "example": "horizontal-placement",
       "component": "AnnotationLine",
       "path": "/example/AnnotationLine/horizontal-placement",
-      "lineNumber": 18,
+      "lineNumber": 19,
       "line": "<AnnotationLine"
     },
     {
@@ -159,7 +159,7 @@
       "example": "vertical-placement",
       "component": "AnnotationLine",
       "path": "/example/AnnotationLine/vertical-placement",
-      "lineNumber": 18,
+      "lineNumber": 19,
       "line": "<AnnotationLine"
     },
     {
@@ -191,5 +191,5 @@
       "line": "<AnnotationLine"
     }
   ],
-  "updatedAt": "2025-11-14T15:00:19.104Z"
+  "updatedAt": "2025-11-23T01:49:01.612Z"
 }
