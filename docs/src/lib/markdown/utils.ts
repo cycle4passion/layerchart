@@ -5,7 +5,9 @@ import {
 	allComponents,
 	type Component as ComponentMetadata,
 	allExamples,
-	type Example as ExampleMetadata
+	type Example as ExampleMetadata,
+	allUtils,
+	type Util as UtilMetadata
 } from 'content-collections';
 
 import type { Examples } from '$lib/types.js';
@@ -14,23 +16,24 @@ import type { ComponentCatalog } from '$examples/catalog/types.js';
 /**
  * Get markdown document component and metadata (frontmatter)
  * @param slug
+ * @param type - The type of content ('components' or 'utils')
  * @returns
  */
-export async function getMarkdownComponent(slug: string = 'index') {
+export async function getMarkdownComponent(slug: string = 'index', type: 'components' | 'utils' = 'components') {
 	const modules = import.meta.glob<{
 		default: Component;
-		metadata: ComponentMetadata | ExampleMetadata;
+		metadata: ComponentMetadata | ExampleMetadata | UtilMetadata;
 	}>('/src/content/**/*.md');
 
 	let doc: Awaited<ReturnType<(typeof modules)[string]>> | null = null;
 	for (const [path, resolver] of Object.entries(modules)) {
-		if (path === `/src/content/components/${slug}.md`) {
+		if (path === `/src/content/${type}/${slug}.md`) {
 			doc = await resolver();
 			break;
 		}
 	}
 
-	const metadata = getMetadata(slug);
+	const metadata = getMetadata(slug, type);
 
 	if (!doc || !metadata) {
 		error(404, 'Could not find the document.');
@@ -45,7 +48,10 @@ export async function getMarkdownComponent(slug: string = 'index') {
 /**
  * Get full metadata (authored frontmatter + content-collection transformed)
  */
-function getMetadata(slug: string): ComponentMetadata {
+function getMetadata(slug: string, type: 'components' | 'utils' = 'components'): ComponentMetadata | UtilMetadata {
+	if (type === 'utils') {
+		return allUtils.find((u) => u.slug === slug) as any;
+	}
 	return allComponents.find((c) => c.slug === slug) as any;
 }
 
@@ -56,6 +62,7 @@ function getMetadata(slug: string): ComponentMetadata {
  * @param allExamples - Glob import of all example components
  * @param allSources - Glob import of all example sources
  * @param defaultComponent - Optional default component name (from route params)
+ * @param type - The type of content ('components' or 'utils')
  * @returns Examples object with loaded components and sources
  */
 export async function loadExamplesFromMarkdown(
@@ -63,7 +70,8 @@ export async function loadExamplesFromMarkdown(
 	catalog: ComponentCatalog | null,
 	allExamples: Record<string, () => Promise<any>>,
 	allSources: Record<string, () => Promise<any>>,
-	defaultComponent?: string
+	defaultComponent?: string,
+	type: 'components' | 'utils' = 'components'
 ): Promise<Examples> {
 	// Extract all <Example component="..." name="..."> from markdown content
 	const regex = /<Example\s+([^>]*?)\/>/g;
@@ -77,17 +85,22 @@ export async function loadExamplesFromMarkdown(
 
 	const examples: Examples = {};
 	for (const path in allExamples) {
-		if (
-			catalog?.examples.some(
-				(example) => path === `/src/examples/${catalog.component}/${example.name}.svelte`
-			) ||
-			pageExamples.some(
-				(example) => path === `/src/examples/${example.component}/${example.name}.svelte`
-			)
-		) {
+		// Check if this path matches catalog examples
+		const catalogMatch = catalog?.examples.some(
+			(example) => path === `/src/examples/${type}/${catalog.component}/${example.name}.svelte`
+		);
+
+		// Check if this path matches page examples
+		const pageMatch = pageExamples.some(
+			(example) => path === `/src/examples/${type}/${example.component}/${example.name}.svelte`
+		);
+
+		if (catalogMatch || pageMatch) {
 			const component = (await allExamples[path]()) as Component;
 			const source = (await allSources[path]()) as string;
-			const [_, __, ___, componentName, filename] = path.split('/');
+			const pathParts = path.split('/');
+			const componentName = pathParts[pathParts.length - 2];
+			const filename = pathParts[pathParts.length - 1];
 			const name = filename.replace('.svelte', '');
 
 			// Remove `export { data };`

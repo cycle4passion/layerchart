@@ -2,7 +2,7 @@
 	import { NavItem, type IconProp } from 'svelte-ux';
 	import { flatGroup } from 'd3-array';
 
-	import { allComponents } from 'content-collections';
+	import { allComponents, allUtils } from 'content-collections';
 	import { page } from '$app/state';
 	import { sortFunc } from '@layerstack/utils';
 	import { cls } from '@layerstack/tailwind';
@@ -16,6 +16,7 @@
 	import LucideBlocks from '~icons/lucide/blocks';
 	import LucideFileCode2 from '~icons/lucide/file-code-2';
 	import LucideCirclePlay from '~icons/lucide/circle-play';
+	import LucideParentheses from '~icons/lucide/parentheses';
 
 	let { onItemClick, class: className }: { onItemClick?: () => void; class?: string } = $props();
 
@@ -106,6 +107,17 @@
 				</div>
 			</div>
 		{/each}
+	</section>
+
+	<section>
+		<h2 class="flex gap-2 items-center mb-3 text-base font-semibold capitalize">
+			<LucideParentheses class="size-4 text-surface-content/70" /> Utils
+		</h2>
+		<div class="border-l border-surface-content/10">
+			{#each allUtils as util}
+				{@render navItem({ label: util.name, path: `/docs/utils/${util.slug}` })}
+			{/each}
+		</div>
 	</section>
 </nav>
 
