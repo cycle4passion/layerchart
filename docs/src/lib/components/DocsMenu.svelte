@@ -53,7 +53,7 @@
 </script>
 
 <nav class={cls('grid gap-6', className)}>
-	<section>
+	<section class="border-l border-surface-content/10">
 		{@render navItem({
 			label: 'Getting Started',
 			path: '/docs/getting-started',
