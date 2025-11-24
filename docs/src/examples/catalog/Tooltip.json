@@ -1322,6 +1322,34 @@
       "line": "<Tooltip.Separator />"
     },
     {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 26,
+      "line": "<Tooltip.Root>"
+    },
+    {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 28,
+      "line": "<Tooltip.Header>{format(context.x(data))}</Tooltip.Header>"
+    },
+    {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 29,
+      "line": "<Tooltip.List>"
+    },
+    {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 30,
+      "line": "<Tooltip.Item label=\"value\" value={context.y(data)} />"
+    },
+    {
       "example": "custom-tooltip",
       "component": "BarChart",
       "path": "/example/BarChart/custom-tooltip",
@@ -2067,56 +2095,56 @@
       "example": "series-horizontal-diverging",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging",
-      "lineNumber": 56,
+      "lineNumber": 57,
       "line": "<Tooltip.Root>"
     },
     {
       "example": "series-horizontal-diverging",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging",
-      "lineNumber": 58,
+      "lineNumber": 59,
       "line": "<Tooltip.Header>Age: {format(context.y(data))}</Tooltip.Header>"
     },
     {
       "example": "series-horizontal-diverging",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging",
-      "lineNumber": 59,
+      "lineNumber": 60,
       "line": "<Tooltip.List>"
     },
     {
       "example": "series-horizontal-diverging",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging",
-      "lineNumber": 63,
+      "lineNumber": 64,
       "line": "<Tooltip.Item label={s.key} color={s.color}>"
     },
     {
       "example": "series-horizontal-diverging-as-percent",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging-as-percent",
-      "lineNumber": 57,
+      "lineNumber": 58,
       "line": "<Tooltip.Root>"
     },
     {
       "example": "series-horizontal-diverging-as-percent",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging-as-percent",
-      "lineNumber": 59,
+      "lineNumber": 60,
       "line": "<Tooltip.Header>Age: {format(context.y(data))}</Tooltip.Header>"
     },
     {
       "example": "series-horizontal-diverging-as-percent",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging-as-percent",
-      "lineNumber": 60,
+      "lineNumber": 61,
       "line": "<Tooltip.List>"
     },
     {
       "example": "series-horizontal-diverging-as-percent",
       "component": "BarChart",
       "path": "/example/BarChart/series-horizontal-diverging-as-percent",
-      "lineNumber": 64,
+      "lineNumber": 65,
       "line": "<Tooltip.Item label={s.key} color={s.color}>"
     },
     {
@@ -2186,29 +2214,29 @@
       "example": "sparkbar-within-a-paragraph-with-tooltip-and-highlight",
       "component": "BarChart",
       "path": "/example/BarChart/sparkbar-within-a-paragraph-with-tooltip-and-highlight",
-      "lineNumber": 25,
+      "lineNumber": 26,
       "line": "<Tooltip.Root {context} class=\"text-xs\" contained={false} y={context.height + 4} xOffset={0}>"
     },
     {
       "example": "sparkbar-within-a-paragraph-with-tooltip-and-highlight",
       "component": "BarChart",
       "path": "/example/BarChart/sparkbar-within-a-paragraph-with-tooltip-and-highlight",
-      "lineNumber": 27,
+      "lineNumber": 28,
       "line": "<Tooltip.Header value={data.date} format=\"day\" />"
     },
     {
       "example": "sparkbar-within-a-paragraph-with-tooltip-and-highlight",
       "component": "BarChart",
       "path": "/example/BarChart/sparkbar-within-a-paragraph-with-tooltip-and-highlight",
-      "lineNumber": 28,
+      "lineNumber": 29,
       "line": "<Tooltip.List>"
     },
     {
       "example": "sparkbar-within-a-paragraph-with-tooltip-and-highlight",
       "component": "BarChart",
       "path": "/example/BarChart/sparkbar-within-a-paragraph-with-tooltip-and-highlight",
-      "lineNumber": 29,
-      "line": "<Tooltip.Item label=\"value\" value={data.value} />"
+      "lineNumber": 30,
+      "line": "<Tooltip.Item label=\"value\" value={format(data.value, 'decimal')} />"
     },
     {
       "example": "horizontal-candlestick-bars",
@@ -2347,42 +2375,42 @@
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 102,
+      "lineNumber": 114,
       "line": "<Tooltip.Root>"
     },
     {
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 104,
+      "lineNumber": 116,
       "line": "<Tooltip.Header>{data.year}</Tooltip.Header>"
     },
     {
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 105,
+      "lineNumber": 117,
       "line": "<Tooltip.List>"
     },
     {
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 107,
+      "lineNumber": 119,
       "line": "<Tooltip.Item"
     },
     {
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 116,
+      "lineNumber": 128,
       "line": "<Tooltip.Separator />"
     },
     {
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 119,
+      "lineNumber": 131,
       "line": "<Tooltip.Item"
     },
     {
@@ -2571,28 +2599,28 @@
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 106,
+      "lineNumber": 118,
       "line": "<Tooltip.Root>"
     },
     {
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 108,
+      "lineNumber": 120,
       "line": "<Tooltip.Header>{data.year}</Tooltip.Header>"
     },
     {
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 109,
+      "lineNumber": 121,
       "line": "<Tooltip.List>"
     },
     {
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 110,
+      "lineNumber": 122,
       "line": "<Tooltip.Item"
     },
     {
@@ -2739,42 +2767,42 @@
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 101,
+      "lineNumber": 113,
       "line": "<Tooltip.Root>"
     },
     {
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 103,
+      "lineNumber": 115,
       "line": "<Tooltip.Header>{data.year}</Tooltip.Header>"
     },
     {
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 104,
+      "lineNumber": 116,
       "line": "<Tooltip.List>"
     },
     {
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 106,
+      "lineNumber": 118,
       "line": "<Tooltip.Item"
     },
     {
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 115,
+      "lineNumber": 127,
       "line": "<Tooltip.Separator />"
     },
     {
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 118,
+      "lineNumber": 130,
       "line": "<Tooltip.Item"
     },
     {
@@ -2998,28 +3026,28 @@
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 107,
+      "lineNumber": 118,
       "line": "<Tooltip.Root>"
     },
     {
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 109,
+      "lineNumber": 120,
       "line": "<Tooltip.Header>{data.year}</Tooltip.Header>"
     },
     {
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 110,
+      "lineNumber": 121,
       "line": "<Tooltip.List>"
     },
     {
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 111,
+      "lineNumber": 122,
       "line": "<Tooltip.Item"
     },
     {
@@ -3639,11 +3667,53 @@
       "line": "<Tooltip.Item label=\"Magnitude\" value={data.magnitude} format=\"decimal\" />"
     },
     {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 126,
+      "line": "<Tooltip.Root>"
+    },
+    {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 128,
+      "line": "<Tooltip.List>"
+    },
+    {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 130,
+      "line": "<Tooltip.Item label={key} {value} />"
+    },
+    {
       "example": "projection-playground",
       "component": "GeoContext",
       "path": "/example/GeoContext/projection-playground",
       "lineNumber": 87,
       "line": "<Tooltip.Root>"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 134,
+      "line": "<Tooltip.Root>"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 136,
+      "line": "<Tooltip.List>"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 138,
+      "line": "<Tooltip.Item label={key} {value} />"
     },
     {
       "example": "animated-globe",
@@ -5753,5 +5823,5 @@
       "line": "<Tooltip.Item label=\"value\" value={data.value} format=\"integer\" />"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:02.891Z"
+  "updatedAt": "2025-11-24T01:39:38.618Z"
 }

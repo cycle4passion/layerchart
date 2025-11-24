@@ -540,6 +540,13 @@
       "line": "<GeoPath"
     },
     {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 116,
+      "line": "<GeoPath"
+    },
+    {
       "example": "projection-playground",
       "component": "GeoContext",
       "path": "/example/GeoContext/projection-playground",
@@ -551,6 +558,20 @@
       "component": "GeoContext",
       "path": "/example/GeoContext/projection-playground",
       "lineNumber": 79,
+      "line": "<GeoPath"
+    },
+    {
+      "example": "shapefile-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/shapefile-preview",
+      "lineNumber": 110,
+      "line": "<GeoPath {geojson} fill=\"white\" />"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 124,
       "line": "<GeoPath"
     },
     {
@@ -1002,5 +1023,5 @@
       "line": "<GeoPath geojson={states} class=\"fill-surface-content/10 stroke-surface-100\" />"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:02.172Z"
+  "updatedAt": "2025-11-24T01:39:37.685Z"
 }

@@ -549,6 +549,13 @@
       "line": "<Layer>"
     },
     {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 19,
+      "line": "<Layer>"
+    },
+    {
       "example": "horizontal-average-annotation-rule",
       "component": "Bars",
       "path": "/example/Bars/horizontal-average-annotation-rule",
@@ -622,7 +629,7 @@
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 64,
+      "lineNumber": 76,
       "line": "<Layer>"
     },
     {
@@ -741,7 +748,7 @@
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 63,
+      "lineNumber": 75,
       "line": "<Layer>"
     },
     {
@@ -846,7 +853,7 @@
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 64,
+      "lineNumber": 76,
       "line": "<Layer>"
     },
     {
@@ -986,7 +993,7 @@
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 64,
+      "lineNumber": 75,
       "line": "<Layer>"
     },
     {
@@ -1438,10 +1445,45 @@
       "line": "<Layer>"
     },
     {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 102,
+      "line": "<Layer>"
+    },
+    {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 113,
+      "line": "<Layer>"
+    },
+    {
       "example": "projection-playground",
       "component": "GeoContext",
       "path": "/example/GeoContext/projection-playground",
       "lineNumber": 75,
+      "line": "<Layer>"
+    },
+    {
+      "example": "shapefile-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/shapefile-preview",
+      "lineNumber": 109,
+      "line": "<Layer>"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 110,
+      "line": "<Layer>"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 121,
       "line": "<Layer>"
     },
     {
@@ -3006,5 +3048,5 @@
       "line": "<Layer onpointermove={onPointerMove}>"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:02.369Z"
+  "updatedAt": "2025-11-24T01:39:37.966Z"
 }
