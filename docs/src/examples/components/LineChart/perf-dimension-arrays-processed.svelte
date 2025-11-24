@@ -5,6 +5,7 @@
 	import { format } from '@layerstack/utils';
 	import { zip } from 'd3-array';
 	import { getDimensionArrays } from '$lib/data.remote.js';
+	import Blockquote from '$lib/markdown/components/blockquote.svelte';
 
 	const data = await getDimensionArrays();
 
@@ -98,5 +99,9 @@
 		{/key}
 	</div>
 
-	data: {format(data.cpu.length)} points
+	<Blockquote>
+		Individual arrays per dimension, similar to uplot. Pre-processed before passed to LineChart. {format(
+			data.cpu.length
+		)} data points
+	</Blockquote>
 </div>

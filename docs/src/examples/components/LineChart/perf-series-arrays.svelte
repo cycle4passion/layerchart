@@ -4,6 +4,7 @@
 	import { Field, ToggleGroup, ToggleOption } from 'svelte-ux';
 	import { format } from '@layerstack/utils';
 	import { getSeriesArrays } from '$lib/data.remote.js';
+	import Blockquote from '$lib/markdown/components/blockquote.svelte';
 
 	const data = await getSeriesArrays();
 
@@ -72,5 +73,7 @@
 		{/key}
 	</div>
 
-	data: {format(data.cpu.length)} points
+	<Blockquote>
+		Array per series, each with `x` / `y` items. {format(data.cpu.length)} data points
+	</Blockquote>
 </div>

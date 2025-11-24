@@ -4,6 +4,7 @@
 	import { Field, ToggleGroup, ToggleOption } from 'svelte-ux';
 	import { format } from '@layerstack/utils';
 	import { getWideData } from '$lib/data.remote.js';
+	import Blockquote from '$lib/markdown/components/blockquote.svelte';
 
 	const data = await getWideData();
 
@@ -76,5 +77,7 @@
 		{/key}
 	</div>
 
-	data: {format(data.length)} points
+	<Blockquote>
+		Individual arrays per dimension, similar to uplot. {format(data.length)} data points
+	</Blockquote>
 </div>
