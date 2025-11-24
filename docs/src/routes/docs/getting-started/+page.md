@@ -1,5 +1,6 @@
 <script lang="ts">
   import Example from '$lib/components/Example.svelte';
+	import PackageManager from '$lib/components/PackageManager.svelte';
 </script>
 
 # Getting Started
@@ -24,15 +25,11 @@ or checkout out the [standlone example](https://github.com/techniq/layerchart/tr
 
 ## Manual setup
 
-To manually setup LayerChart in a new project (such as one ceated with [sv create](https://svelte.dev/docs/cli/sv-create)) or in an existing project.
+To manually setup LayerChart in a new project (such as one created with [sv create](https://svelte.dev/docs/cli/sv-create)) or in an existing project.
 
 First import `layerchart` with your package manager of choice:
 
-```sh
-npm install layerchart
-# or
-pnpm install layerchart
-```
+<PackageManager />
 
 then import the components from `layerchart`:
 
