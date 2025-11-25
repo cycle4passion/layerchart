@@ -35,7 +35,7 @@
 
 <style>
 	/* Note: Can be updated if Svelte-UX with activetab css class. */
-	:global(button.bg-surface-100) {
+	:global(.Tabs button.bg-surface-100) {
 		background-color: var(--color-surface-300);
 		border-bottom-color: var(--color-surface-300);
 	}
