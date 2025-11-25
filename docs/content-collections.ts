@@ -99,6 +99,54 @@ const examples = defineCollection({
 	}
 });
 
+const utils = defineCollection({
+	name: 'utils',
+	directory: 'src/content/utils',
+	include: '**/*.md',
+	schema: z.object({
+		name: z.string().optional(),
+		description: z.string().optional(),
+		category: z.string().optional(),
+		layers: z.array(z.string()).default([]),
+		related: z.array(z.string()).default([]),
+		resize: z.boolean().optional(),
+		tableOfContents: z.boolean().default(true),
+		order: z.number().optional()
+	}),
+	transform: async (doc) => {
+		const { filePath, fileName, directory, path } = doc._meta;
+
+		// Read the source file from the layerchart package
+		const sourcePath = join(
+			process.cwd(),
+			`../packages/layerchart/src/lib/utils/${path}.ts`
+		);
+
+		let source = '';
+		let sourceUrl = '';
+		try {
+			source = readFileSync(sourcePath, 'utf-8');
+			sourceUrl = `https://github.com/techniq/layerchart/blob/next/packages/layerchart/src/lib/utils/${path}.ts`;
+		} catch (error) {
+			// console.warn(
+			// 	`Could not read source file for ${filePath}: ${error instanceof Error ? error.message : String(error)}`
+			// );
+		}
+
+		// Extract the first Example component's name from the markdown content
+		const usageExample = doc.content.match(/<Example\s+[^>]*name=["']([^"']+)["'][^>]*>/)?.[1];
+
+		return {
+			...doc,
+			name: doc.name ?? toPascalCase(fileName.replace('.md', '')),
+			slug: fileName.replace('.md', '').toLowerCase(), // Use lowercase for utils slugs
+			source,
+			sourceUrl,
+			usageExample
+		};
+	}
+});
+
 export default defineConfig({
-	collections: [components, examples]
+	collections: [components, examples, utils]
 });

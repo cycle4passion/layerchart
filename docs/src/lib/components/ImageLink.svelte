@@ -44,7 +44,7 @@
 					: 'transition-colors group-hover:text-primary-content'
 			)}
 		>
-			<span class="grow flex gap-1">
+			<span class="grow flex gap-1 truncate">
 				{@render label()}
 			</span>
 

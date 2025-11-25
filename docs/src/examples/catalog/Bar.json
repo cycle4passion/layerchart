@@ -13,7 +13,7 @@
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 70,
+      "lineNumber": 82,
       "line": "<Bar"
     },
     {
@@ -27,7 +27,7 @@
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 68,
+      "lineNumber": 80,
       "line": "<Bar"
     },
     {
@@ -41,7 +41,7 @@
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 69,
+      "lineNumber": 81,
       "line": "<Bar"
     },
     {
@@ -62,9 +62,9 @@
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 69,
+      "lineNumber": 80,
       "line": "<Bar"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:01.764Z"
+  "updatedAt": "2025-11-24T01:39:37.083Z"
 }

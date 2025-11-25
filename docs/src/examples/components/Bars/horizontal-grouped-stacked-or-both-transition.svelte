@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { cubicInOut } from 'svelte/easing';
-	import { longData } from '$lib/utils/data';
-	import { unique } from '@layerstack/utils';
-	import { sum } from 'd3-array';
 	import { scaleBand } from 'd3-scale';
-	import { Axis, Bar, Chart, groupStackData, Highlight, Layer, Tooltip } from 'layerchart';
-	import GroupedStackedComboField from '$lib/components/controls/fields/GroupedStackedComboField.svelte';
+	import { sum } from 'd3-array';
+	import { Bar, Axis, Chart, Highlight, Layer, Tooltip, groupStackData } from 'layerchart';
+	import GroupedStackedComboControls from '$lib/components/controls/BarsControls.svelte';
+	import { longData } from '$lib/utils/data.js';
+	import { unique } from '@layerstack/utils';
+	import { cubicInOut } from 'svelte/easing';
 
 	const colorKeys = [...new Set(longData.map((x) => x.fruit))];
 	const keyColors = [
@@ -18,10 +18,22 @@
 	let chartMode = $state<'group' | 'stack' | 'groupStack'>('group');
 
 	const groupBy = $derived(
-		chartMode === 'group' || chartMode === 'groupStack' ? 'fruit' : undefined
+		(
+			{
+				group: 'fruit',
+				stack: undefined,
+				groupStack: 'basket'
+			} as const
+		)[chartMode]
 	);
 	const stackBy = $derived(
-		chartMode === 'stack' || chartMode === 'groupStack' ? 'fruit' : undefined
+		(
+			{
+				group: undefined,
+				stack: 'fruit',
+				groupStack: 'fruit'
+			} as const
+		)[chartMode]
 	);
 
 	const data = $derived(
@@ -41,30 +53,31 @@
 	export { data };
 </script>
 
-<GroupedStackedComboField bind:chartMode />
-
+<GroupedStackedComboControls bind:chartMode />
+<!-- Always use stackedData for extents for consistent scale -->
 <Chart
 	{data}
-	x="year"
-	xScale={scaleBand().paddingInner(0.4).paddingOuter(0.2)}
-	y="values"
-	yNice
+	x="values"
+	xNice
+	y="year"
+	yScale={scaleBand().paddingInner(0.2).paddingOuter(0.1)}
 	c="fruit"
 	cDomain={colorKeys}
 	cRange={keyColors}
-	x1={groupBy}
-	x1Scale={groupBy ? scaleBand().padding(0.1) : undefined}
-	x1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : undefined}
-	x1Range={({ xScale }) => [0, xScale.bandwidth()]}
-	padding={{ left: 32, bottom: 20, top: 8 }}
+	y1={groupBy}
+	y1Scale={groupBy ? scaleBand().padding(0.1) : undefined}
+	y1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : undefined}
+	y1Range={({ yScale }) => [0, yScale.bandwidth()]}
+	padding={{ left: 32, bottom: 20, right: 8 }}
 	tooltip={{ mode: 'band' }}
-	height={300}
+	height={400}
 >
 	{#snippet children({ context })}
 		<Layer>
-			<Axis placement="left" grid rule />
-			<Axis placement="bottom" rule />
+			<Axis placement="bottom" grid rule />
+			<Axis placement="left" rule />
 			<g>
+				<!-- TODO: 'data' can be used once type issue is resolved -->
 				{#each data as d (d.year + '-' + d.fruit)}
 					<Bar
 						data={d}

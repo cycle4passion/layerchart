@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { scaleBand } from 'd3-scale';
-	import { Bar, Axis, Chart, Layer, Tooltip, groupStackData } from 'layerchart';
-	import GroupedStackedComboControls from '$lib/components/controls/BarsControls.svelte';
-	import { longData } from '$lib/utils/data.js';
-	import { unique } from '@layerstack/utils';
 	import { cubicInOut } from 'svelte/easing';
+	import { longData } from '$lib/utils/data';
+	import { unique } from '@layerstack/utils';
+	import { sum } from 'd3-array';
+	import { scaleBand } from 'd3-scale';
+	import { Axis, Bar, Chart, groupStackData, Highlight, Layer, Tooltip } from 'layerchart';
+	import GroupedStackedComboField from '$lib/components/controls/fields/GroupedStackedComboField.svelte';
 
 	const colorKeys = [...new Set(longData.map((x) => x.fruit))];
 	const keyColors = [
@@ -17,10 +18,22 @@
 	let chartMode = $state<'group' | 'stack' | 'groupStack'>('group');
 
 	const groupBy = $derived(
-		chartMode === 'group' || chartMode === 'groupStack' ? 'fruit' : undefined
+		(
+			{
+				group: 'fruit',
+				stack: undefined,
+				groupStack: 'basket'
+			} as const
+		)[chartMode]
 	);
 	const stackBy = $derived(
-		chartMode === 'stack' || chartMode === 'groupStack' ? 'fruit' : undefined
+		(
+			{
+				group: undefined,
+				stack: 'fruit',
+				groupStack: 'fruit'
+			} as const
+		)[chartMode]
 	);
 
 	const data = $derived(
@@ -37,32 +50,32 @@
 			values: number[];
 		}[]
 	);
-
 	export { data };
 </script>
 
-<GroupedStackedComboControls bind:chartMode />
-<!-- Always use stackedData for extents for consistent scale -->
+<GroupedStackedComboField bind:chartMode />
+
 <Chart
 	{data}
-	x="values"
-	xNice
-	y="year"
-	yScale={scaleBand().paddingInner(0.2).paddingOuter(0.1)}
+	x="year"
+	xScale={scaleBand().paddingInner(0.4).paddingOuter(0.2)}
+	y="values"
+	yNice
 	c="fruit"
 	cDomain={colorKeys}
 	cRange={keyColors}
-	y1={groupBy}
-	y1Scale={groupBy ? scaleBand().padding(0.1) : undefined}
-	y1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : undefined}
-	y1Range={({ yScale }) => [0, yScale.bandwidth()]}
-	padding={{ left: 32, bottom: 20, right: 8 }}
-	height={400}
+	x1={groupBy}
+	x1Scale={groupBy ? scaleBand().padding(0.1) : undefined}
+	x1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : undefined}
+	x1Range={({ xScale }) => [0, xScale.bandwidth()]}
+	padding={{ left: 32, bottom: 20, top: 8 }}
+	tooltip={{ mode: 'band' }}
+	height={300}
 >
 	{#snippet children({ context })}
 		<Layer>
-			<Axis placement="bottom" grid rule />
-			<Axis placement="left" rule />
+			<Axis placement="left" grid rule />
+			<Axis placement="bottom" rule />
 			<g>
 				{#each data as d (d.year + '-' + d.fruit)}
 					<Bar
@@ -91,26 +104,32 @@
 								delay: groupBy ? 300 : 0
 							}
 						}}
-						class="cursor-pointer"
-						onclick={(e) => {
-							alert('You clicked on:\n' + JSON.stringify(d, null, 2));
-						}}
-						onpointerenter={(e) => context.tooltip.show(e, d)}
-						onpointermove={(e) => context.tooltip.show(e, d)}
-						onpointerleave={(e) => context.tooltip.hide()}
 					/>
 				{/each}
 			</g>
+			<Highlight area />
 		</Layer>
 
 		<Tooltip.Root>
 			{#snippet children({ data })}
 				<Tooltip.Header>{data.year}</Tooltip.Header>
 				<Tooltip.List>
+					{#each data.data as d}
+						<Tooltip.Item
+							label={d.fruit}
+							value={d.value}
+							color={context.cScale?.(d.fruit)}
+							format="integer"
+							valueAlign="right"
+						/>
+					{/each}
+
+					<Tooltip.Separator />
+
+					<!-- TODO: Remove [...] type hack to make svelte-check happy -->
 					<Tooltip.Item
-						label={data.fruit}
-						value={data.value}
-						color={context.cScale?.(data.fruit)}
+						label="total"
+						value={sum([...data.data], (d) => d.value)}
 						format="integer"
 						valueAlign="right"
 					/>

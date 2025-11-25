@@ -26,6 +26,7 @@
 		}
 	]}
 	seriesLayout="group"
+	bandPadding={0.2}
 	props={{
 		xAxis: { format: 'none' },
 		yAxis: { format: 'metric' },

@@ -322,32 +322,32 @@
       "components": [
         {
           "component": "Chart",
-          "lineNumber": 46,
+          "lineNumber": 58,
           "line": "<Chart"
         },
         {
           "component": "Layer",
-          "lineNumber": 64,
+          "lineNumber": 76,
           "line": "<Layer>"
         },
         {
           "component": "Axis",
-          "lineNumber": 65,
+          "lineNumber": 77,
           "line": "<Axis placement=\"bottom\" grid rule />"
         },
         {
           "component": "Bar",
-          "lineNumber": 70,
+          "lineNumber": 82,
           "line": "<Bar"
         },
         {
           "component": "Highlight",
-          "lineNumber": 99,
+          "lineNumber": 111,
           "line": "<Highlight area />"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 102,
+          "lineNumber": 114,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -874,27 +874,27 @@
       "components": [
         {
           "component": "Chart",
-          "lineNumber": 46,
+          "lineNumber": 58,
           "line": "<Chart"
         },
         {
           "component": "Layer",
-          "lineNumber": 63,
+          "lineNumber": 75,
           "line": "<Layer>"
         },
         {
           "component": "Axis",
-          "lineNumber": 64,
+          "lineNumber": 76,
           "line": "<Axis placement=\"bottom\" grid rule />"
         },
         {
           "component": "Bar",
-          "lineNumber": 68,
+          "lineNumber": 80,
           "line": "<Bar"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 106,
+          "lineNumber": 118,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -1339,32 +1339,32 @@
       "components": [
         {
           "component": "Chart",
-          "lineNumber": 46,
+          "lineNumber": 58,
           "line": "<Chart"
         },
         {
           "component": "Layer",
-          "lineNumber": 64,
+          "lineNumber": 76,
           "line": "<Layer>"
         },
         {
           "component": "Axis",
-          "lineNumber": 65,
+          "lineNumber": 77,
           "line": "<Axis placement=\"left\" grid rule />"
         },
         {
           "component": "Bar",
-          "lineNumber": 69,
+          "lineNumber": 81,
           "line": "<Bar"
         },
         {
           "component": "Highlight",
-          "lineNumber": 98,
+          "lineNumber": 110,
           "line": "<Highlight area />"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 101,
+          "lineNumber": 113,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -1984,27 +1984,27 @@
       "components": [
         {
           "component": "Chart",
-          "lineNumber": 47,
+          "lineNumber": 58,
           "line": "<Chart"
         },
         {
           "component": "Layer",
-          "lineNumber": 64,
+          "lineNumber": 75,
           "line": "<Layer>"
         },
         {
           "component": "Axis",
-          "lineNumber": 65,
+          "lineNumber": 76,
           "line": "<Axis placement=\"left\" grid rule />"
         },
         {
           "component": "Bar",
-          "lineNumber": 69,
+          "lineNumber": 80,
           "line": "<Bar"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 107,
+          "lineNumber": 118,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -2192,6 +2192,13 @@
     }
   ],
   "usage": [
+    {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 22,
+      "line": "<Bars radius={4} strokeWidth={1} class=\"fill-primary\" />"
+    },
     {
       "example": "gradient",
       "component": "BarChart",
@@ -2732,5 +2739,5 @@
       "line": "<Bars radius={4} strokeWidth={1} class=\"fill-primary\" />"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:01.816Z"
+  "updatedAt": "2025-11-24T01:39:37.157Z"
 }

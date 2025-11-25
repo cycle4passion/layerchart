@@ -35,25 +35,25 @@
 	y="age"
 	orientation="horizontal"
 	padding={{ left: 32, bottom: 16 }}
-	labels={{ format: (value) => format(Math.abs(value), 'percent') }}
+	xPadding={[5, 5]}
+	labels={{ format: (value) => format(Math.abs(value), 'metric') }}
 	props={{
-		xAxis: { format: (value) => format(Math.abs(value), 'percentRound') }
+		xAxis: { format: (value) => format(Math.abs(value), 'metric') }
 	}}
 	series={[
 		{
 			key: 'male',
-			value: (d) => -d.male / totalPopulation,
+			value: (d) => -d.male,
 			color: 'var(--color-primary)'
 		},
 		{
 			key: 'female',
-			value: (d) => d.female / totalPopulation,
 			color: 'var(--color-secondary)'
 		}
 	]}
 	height={600}
 >
-	{#snippet tooltip({ series, context })}
+	{#snippet tooltip({ context, series })}
 		<Tooltip.Root>
 			{#snippet children({ data })}
 				<Tooltip.Header>Age: {format(context.y(data))}</Tooltip.Header>
@@ -62,7 +62,10 @@
 						{@const valueAccessor = accessor(s.value ?? s.key)}
 						{@const value = Math.abs(valueAccessor(data))}
 						<Tooltip.Item label={s.key} color={s.color}>
-							{format(value, 'percent')}
+							{format(value)}
+							<span class="text-xs text-surface-content/50"
+								>({format(value / totalPopulation, 'percent')})</span
+							>
 						</Tooltip.Item>
 					{/each}
 				</Tooltip.List>

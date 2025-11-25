@@ -709,7 +709,7 @@
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 46,
+      "lineNumber": 58,
       "line": "<Chart"
     },
     {
@@ -828,7 +828,7 @@
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 46,
+      "lineNumber": 58,
       "line": "<Chart"
     },
     {
@@ -933,7 +933,7 @@
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 46,
+      "lineNumber": 58,
       "line": "<Chart"
     },
     {
@@ -1073,7 +1073,7 @@
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 47,
+      "lineNumber": 58,
       "line": "<Chart"
     },
     {
@@ -1525,10 +1525,31 @@
       "line": "<Chart"
     },
     {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 89,
+      "line": "<Chart"
+    },
+    {
       "example": "projection-playground",
       "component": "GeoContext",
       "path": "/example/GeoContext/projection-playground",
       "lineNumber": 63,
+      "line": "<Chart"
+    },
+    {
+      "example": "shapefile-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/shapefile-preview",
+      "lineNumber": 103,
+      "line": "<Chart"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 97,
       "line": "<Chart"
     },
     {
@@ -3016,5 +3037,5 @@
       "line": "<Chart {data} x=\"x\" y=\"y\" height={400}>"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:01.908Z"
+  "updatedAt": "2025-11-24T01:39:37.320Z"
 }

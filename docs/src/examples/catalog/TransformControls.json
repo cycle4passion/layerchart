@@ -3,6 +3,20 @@
   "examples": [],
   "usage": [
     {
+      "example": "geojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/geojson-preview",
+      "lineNumber": 111,
+      "line": "<TransformControls />"
+    },
+    {
+      "example": "topojson-preview",
+      "component": "GeoContext",
+      "path": "/example/GeoContext/topojson-preview",
+      "lineNumber": 119,
+      "line": "<TransformControls />"
+    },
+    {
       "example": "zoomable",
       "component": "GeoTile",
       "path": "/example/GeoTile/zoomable",
@@ -24,5 +38,5 @@
       "line": "<TransformControls />"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:03.021Z"
+  "updatedAt": "2025-11-24T01:39:38.757Z"
 }

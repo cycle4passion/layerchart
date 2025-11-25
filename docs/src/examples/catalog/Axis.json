@@ -1622,6 +1622,20 @@
       "line": "<Axis"
     },
     {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 20,
+      "line": "<Axis placement=\"left\" grid rule />"
+    },
+    {
+      "example": "custom-chart",
+      "component": "BarChart",
+      "path": "/example/BarChart/custom-chart",
+      "lineNumber": 21,
+      "line": "<Axis placement=\"bottom\" rule />"
+    },
+    {
       "example": "single-stack-with-indicator",
       "component": "BarChart",
       "path": "/example/BarChart/single-stack-with-indicator",
@@ -1772,14 +1786,14 @@
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 65,
+      "lineNumber": 77,
       "line": "<Axis placement=\"bottom\" grid rule />"
     },
     {
       "example": "horizontal-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/horizontal-grouped-stacked-or-both-transition",
-      "lineNumber": 66,
+      "lineNumber": 78,
       "line": "<Axis placement=\"left\" rule />"
     },
     {
@@ -2010,14 +2024,14 @@
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 64,
+      "lineNumber": 76,
       "line": "<Axis placement=\"bottom\" grid rule />"
     },
     {
       "example": "horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/horizontal-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 65,
+      "lineNumber": 77,
       "line": "<Axis placement=\"left\" rule />"
     },
     {
@@ -2220,14 +2234,14 @@
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 65,
+      "lineNumber": 77,
       "line": "<Axis placement=\"left\" grid rule />"
     },
     {
       "example": "vertical-grouped-stacked-or-both-transition",
       "component": "Bars",
       "path": "/example/Bars/vertical-grouped-stacked-or-both-transition",
-      "lineNumber": 66,
+      "lineNumber": 78,
       "line": "<Axis placement=\"bottom\" rule />"
     },
     {
@@ -2500,14 +2514,14 @@
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 65,
+      "lineNumber": 76,
       "line": "<Axis placement=\"left\" grid rule />"
     },
     {
       "example": "vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
       "component": "Bars",
       "path": "/example/Bars/vertical-tooltip-and-click-handlers-for-individual-stack-grouped-bar",
-      "lineNumber": 66,
+      "lineNumber": 77,
       "line": "<Axis placement=\"bottom\" rule />"
     },
     {
@@ -4016,5 +4030,5 @@
       "line": "<Axis placement=\"bottom\" rule />"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:01.748Z"
+  "updatedAt": "2025-11-24T01:39:37.066Z"
 }

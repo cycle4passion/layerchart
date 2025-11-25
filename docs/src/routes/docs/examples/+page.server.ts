@@ -10,7 +10,7 @@ interface ExampleInfo {
 }
 
 export async function load() {
-	const exampleModules = import.meta.glob('/src/examples/**/*.svelte');
+	const exampleModules = import.meta.glob('/src/examples/components/**/*.svelte');
 
 	// Create a map of component names to their categories
 	const componentCategoryMap = new Map<string, string>();
@@ -30,8 +30,8 @@ export async function load() {
 	>();
 
 	for (const filePath of Object.keys(exampleModules)) {
-		// Parse path: /src/examples/ComponentName/example-name.svelte
-		const match = filePath.match(/\/examples\/([^/]+)\/(.+)\.svelte$/);
+		// Parse path: /src/examples/components/ComponentName/example-name.svelte
+		const match = filePath.match(/\/examples\/components\/([^/]+)\/(.+)\.svelte$/);
 		if (!match) continue;
 
 		const [, componentName, exampleName] = match;

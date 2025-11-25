@@ -191,17 +191,10 @@
       "line": "<Text {...props} textAnchor={index === 0 ? 'start' : 'end'} />"
     },
     {
-      "example": "custom-chart",
-      "component": "BarChart",
-      "path": "/example/BarChart/custom-chart",
-      "lineNumber": 20,
-      "line": "<text x=\"50\" y=\"50\" class=\"text-sm fill-surface-content\">Custom Chart Implementation</text>"
-    },
-    {
       "example": "group-series-labels",
       "component": "BarChart",
       "path": "/example/BarChart/group-series-labels",
-      "lineNumber": 44,
+      "lineNumber": 45,
       "line": "<Text"
     },
     {
@@ -639,5 +632,5 @@
       "line": "<Text"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:02.835Z"
+  "updatedAt": "2025-11-24T01:39:38.545Z"
 }

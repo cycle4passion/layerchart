@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { scaleBand } from 'd3-scale';
-	import { Axis, Bar, Chart, Layer, Tooltip, groupStackData } from 'layerchart';
+	import { Bar, Axis, Chart, Layer, Tooltip, groupStackData } from 'layerchart';
+	import GroupedStackedComboControls from '$lib/components/controls/BarsControls.svelte';
 	import { longData } from '$lib/utils/data.js';
-	import { cubicInOut } from 'svelte/easing';
 	import { unique } from '@layerstack/utils';
-	import GroupedStackedComboField from '$lib/components/controls/fields/GroupedStackedComboField.svelte';
+	import { cubicInOut } from 'svelte/easing';
 
 	const colorKeys = [...new Set(longData.map((x) => x.fruit))];
 	const keyColors = [
@@ -17,17 +17,29 @@
 	let chartMode = $state<'group' | 'stack' | 'groupStack'>('group');
 
 	const groupBy = $derived(
-		chartMode === 'group' ? 'fruit' : chartMode === 'groupStack' ? 'basket' : undefined
+		(
+			{
+				group: 'fruit',
+				stack: undefined,
+				groupStack: 'basket'
+			} as const
+		)[chartMode]
 	);
 	const stackBy = $derived(
-		chartMode === 'stack' || chartMode === 'groupStack' ? 'fruit' : undefined
+		(
+			{
+				group: undefined,
+				stack: 'fruit',
+				groupStack: 'fruit'
+			} as const
+		)[chartMode]
 	);
 
 	const data = $derived(
 		groupStackData(longData, {
 			xKey: 'year',
-			groupBy,
-			stackBy
+			groupBy: groupBy,
+			stackBy: stackBy
 		}) as {
 			year: string;
 			fruit: string;
@@ -41,28 +53,28 @@
 	export { data };
 </script>
 
-<GroupedStackedComboField bind:chartMode />
-
+<GroupedStackedComboControls bind:chartMode />
+<!-- Always use stackedData for extents for consistent scale -->
 <Chart
 	{data}
-	x="year"
-	xScale={scaleBand().paddingInner(0.4).paddingOuter(0.2)}
-	y="values"
-	yNice
+	x="values"
+	xNice
+	y="year"
+	yScale={scaleBand().paddingInner(0.2).paddingOuter(0.1)}
 	c="fruit"
 	cDomain={colorKeys}
 	cRange={keyColors}
-	x1={groupBy}
-	x1Scale={groupBy ? scaleBand().padding(0.1) : null}
-	x1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : null}
-	x1Range={({ xScale }) => [0, xScale.bandwidth()]}
-	padding={{ left: 32, bottom: 20, top: 8 }}
-	height={300}
+	y1={groupBy}
+	y1Scale={groupBy ? scaleBand().padding(0.1) : undefined}
+	y1Domain={groupBy ? unique(data.map((d) => d[groupBy])) : undefined}
+	y1Range={({ yScale }) => [0, yScale.bandwidth()]}
+	padding={{ left: 32, bottom: 20, right: 8 }}
+	height={400}
 >
 	{#snippet children({ context })}
 		<Layer>
-			<Axis placement="left" grid rule />
-			<Axis placement="bottom" rule />
+			<Axis placement="bottom" grid rule />
+			<Axis placement="left" rule />
 			<g>
 				{#each data as d (d.year + '-' + d.fruit)}
 					<Bar
@@ -93,7 +105,7 @@
 						}}
 						class="cursor-pointer"
 						onclick={(e) => {
-							alert('You clicked on: ' + JSON.stringify(d, null, 2));
+							alert('You clicked on:\n' + JSON.stringify(d, null, 2));
 						}}
 						onpointerenter={(e) => context.tooltip.show(e, d)}
 						onpointermove={(e) => context.tooltip.show(e, d)}

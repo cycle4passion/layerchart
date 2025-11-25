@@ -111,13 +111,33 @@
       "components": [
         {
           "component": "BarChart",
-          "lineNumber": 16,
+          "lineNumber": 17,
           "line": "<BarChart {data} x=\"date\" y=\"value\" height={300}>"
         },
         {
-          "component": "Text",
+          "component": "Layer",
+          "lineNumber": 19,
+          "line": "<Layer>"
+        },
+        {
+          "component": "Axis",
           "lineNumber": 20,
-          "line": "<text x=\"50\" y=\"50\" class=\"text-sm fill-surface-content\">Custom Chart Implementation</text>"
+          "line": "<Axis placement=\"left\" grid rule />"
+        },
+        {
+          "component": "Bars",
+          "lineNumber": 22,
+          "line": "<Bars radius={4} strokeWidth={1} class=\"fill-primary\" />"
+        },
+        {
+          "component": "Highlight",
+          "lineNumber": 23,
+          "line": "<Highlight area />"
+        },
+        {
+          "component": "Tooltip",
+          "lineNumber": 26,
+          "line": "<Tooltip.Root>"
         }
       ]
     },
@@ -382,7 +402,7 @@
         },
         {
           "component": "Text",
-          "lineNumber": 44,
+          "lineNumber": 45,
           "line": "<Text"
         }
       ]
@@ -823,7 +843,7 @@
         },
         {
           "component": "Tooltip",
-          "lineNumber": 56,
+          "lineNumber": 57,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -839,7 +859,7 @@
         },
         {
           "component": "Tooltip",
-          "lineNumber": 57,
+          "lineNumber": 58,
           "line": "<Tooltip.Root>"
         }
       ]
@@ -968,12 +988,12 @@
       "components": [
         {
           "component": "BarChart",
-          "lineNumber": 12,
+          "lineNumber": 13,
           "line": "<BarChart"
         },
         {
           "component": "Tooltip",
-          "lineNumber": 25,
+          "lineNumber": 26,
           "line": "<Tooltip.Root {context} class=\"text-xs\" contained={false} y={context.height + 4} xOffset={0}>"
         }
       ]
@@ -1199,7 +1219,7 @@
       "example": "custom-chart",
       "component": "BarChart",
       "path": "/example/BarChart/custom-chart",
-      "lineNumber": 16,
+      "lineNumber": 17,
       "line": "<BarChart {data} x=\"date\" y=\"value\" height={300}>"
     },
     {
@@ -1633,7 +1653,7 @@
       "example": "sparkbar-within-a-paragraph-with-tooltip-and-highlight",
       "component": "BarChart",
       "path": "/example/BarChart/sparkbar-within-a-paragraph-with-tooltip-and-highlight",
-      "lineNumber": 12,
+      "lineNumber": 13,
       "line": "<BarChart"
     },
     {
@@ -1742,5 +1762,5 @@
       "line": "<BarChart"
     }
   ],
-  "updatedAt": "2025-11-23T01:49:01.790Z"
+  "updatedAt": "2025-11-24T01:39:37.113Z"
 }
