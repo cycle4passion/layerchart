@@ -68,27 +68,32 @@
 	]
 
 	const integrationOptions = [
-			{
-				value: 0,
-				label: 'shadcn-svelte',
-				source: "@import 'layerchart/shadcn-svelte.css';"
-			},
-			{
-				value: 1,
-				label: 'Skeleton 3',
-				source: "@import 'layerchart/skeleton-3.css';"
-			},
-			{
-				value: 2,
-				label: 'Skeleton 4',
-				source: "@import 'layerchart/skeleton-4.css';"
-			},
-			{
-				value: 3,
-				label: 'DaisyUI 5',
-				source: "@import 'layerchart/daisyui-5.css';"
-			},
-		];
+		{
+			value: 0,
+			label: 'shadcn-svelte',
+			source: "@import 'layerchart/shadcn-svelte.css';"
+		},
+		{
+			value: 1,
+			label: 'Skeleton 3',
+			source: "@import 'layerchart/skeleton-3.css';"
+		},
+		{
+			value: 2,
+			label: 'Skeleton 4',
+			source: "@import 'layerchart/skeleton-4.css';"
+		},
+		{
+			value: 3,
+			label: 'Svelte UX',
+			source: "/* Works out of the box */"
+		},
+		{
+			value: 4,
+			label: 'DaisyUI 5',
+			source: "@import 'layerchart/daisyui-5.css';"
+		},
+	];
 </script>
 
 # Getting Started
@@ -125,7 +130,7 @@ or checkout out the **standlone** {@render githubButton('standalone')} {@render 
 
 ## Manual setup
 
-To manually setup LayerChart in a new project (such as one ceated with [sv create](https://svelte.dev/docs/cli/sv-create)) or in an existing project.
+To manually setup LayerChart in a new project (such as one created with [sv create](https://svelte.dev/docs/cli/sv-create)) or in an existing project.
 
 First import `layerchart` with your package manager of choice:
 
