@@ -7,10 +7,9 @@
 	let motion = $state(true);
 	let show = $state(true);
 
-	let count = $state(100);
-	let maxLength = $state(4000);
+	let pointsPerFrame = $state(10);
+	let maxLength = $state(10000);
 	let chartData = $state<{ date: Date; value: number }[]>([]);
-	// let chartData = $state.raw<{ date: Date; value: number }[]>([]);
 
 	function generateDataPoint(
 		referenceDate: Date,
@@ -47,15 +46,20 @@
 					: new Date('2025-04-07T22:00:00.000Z');
 			let nextDate = new Date(latestDate.getTime() + 24 * 60 * 60 * 1000); // Start from the next day
 
-			const newPoints = generateDataPoints(count, nextDate, 1, [0, 100]);
+			const newPoints = generateDataPoints(pointsPerFrame, nextDate, 1, [0, 100]);
 
-			// mutate in place
-			chartData.splice(0, Math.max(0, chartData.length + newPoints.length - maxLength));
-			chartData.push(...newPoints);
+			// Check if we're at or over capacity
+			if (chartData.length + newPoints.length > maxLength) {
+				// Remove old points and add new points in one operation to maintain buffer size
+				chartData = [...chartData.slice(-(maxLength - newPoints.length)), ...newPoints];
+			} else {
+				// Just push new points
+				chartData.push(...newPoints);
+			}
 
-			nextDate = new Date(nextDate.getTime() + count * 24 * 60 * 60 * 1000);
+			nextDate = new Date(nextDate.getTime() + pointsPerFrame * 24 * 60 * 60 * 1000);
 		},
-		{ fpsLimit: () => 1000 / count }
+		{ fpsLimit: () => 30, immediate: false }
 	);
 
 	function loadRandomData() {
@@ -64,7 +68,7 @@
 				? chartData[chartData.length - 1].date
 				: new Date('2025-04-07T22:00:00.000Z');
 		let nextDate = new Date(latestDate.getTime() + 24 * 60 * 60 * 1000); // Start from the next day
-		const newPoints = generateDataPoints(count, nextDate, 1, [0, 100]);
+		const newPoints = generateDataPoints(pointsPerFrame, nextDate, 1, [0, 100]);
 
 		// mutate in place
 		chartData.splice(0, Math.max(0, chartData.length + newPoints.length - maxLength));
@@ -104,7 +108,14 @@
 		<Button onclick={() => clearData()} variant="fill-light">Clear</Button>
 		<Button onclick={() => loadRandomData()} variant="fill-light">Load more</Button>
 
-		<TextField label="Frequency (Hz)" bind:value={count} type="integer" min={1} step={100} dense />
+		<TextField
+			label="Frequency (Hz)"
+			bind:value={pointsPerFrame}
+			type="integer"
+			min={1}
+			step={100}
+			dense
+		/>
 		<TextField
 			label="Buffer size"
 			bind:value={maxLength}
