@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button } from 'svelte-ux';
   import Example from '$lib/components/Example.svelte';
+	import TabbedCode from '$lib/components/TabbedCode.svelte';
   import {
 		a as A,
 		ul as Ul,
@@ -37,6 +38,62 @@
 			}
 		},
 	}
+
+	const layerchartOptions = [
+		{
+			value: 0,
+			label: 'pnpm',
+			source: 'pnpm i layerchart',
+		},
+				{
+			value: 1,
+			label: 'npm',
+			source: 'npm i layerchart',
+		},
+				{
+			value: 2,
+			label: 'bun',
+			source: 'bun add layerchart',
+		},
+				{
+			value: 3,
+			label: 'deno',
+			source: 'deno add layerchart',
+		},
+				{
+			value: 4,
+			label: 'yarn',
+			source: 'yarn add layerchart',
+		},
+	]
+
+	const integrationOptions = [
+		{
+			value: 0,
+			label: 'shadcn-svelte',
+			source: "@import 'layerchart/shadcn-svelte.css';"
+		},
+		{
+			value: 1,
+			label: 'Skeleton 3',
+			source: "@import 'layerchart/skeleton-3.css';"
+		},
+		{
+			value: 2,
+			label: 'Skeleton 4',
+			source: "@import 'layerchart/skeleton-4.css';"
+		},
+		{
+			value: 3,
+			label: 'Svelte UX',
+			source: "/* Works out of the box */"
+		},
+		{
+			value: 4,
+			label: 'DaisyUI 5',
+			source: "@import 'layerchart/daisyui-5.css';"
+		},
+	];
 </script>
 
 # Getting Started
@@ -73,15 +130,11 @@ or checkout out the **standlone** {@render githubButton('standalone')} {@render 
 
 ## Manual setup
 
-To manually setup LayerChart in a new project (such as one ceated with [sv create](https://svelte.dev/docs/cli/sv-create)) or in an existing project.
+To manually setup LayerChart in a new project (such as one created with [sv create](https://svelte.dev/docs/cli/sv-create)) or in an existing project.
 
 First import `layerchart` with your package manager of choice:
 
-```sh
-npm install layerchart
-# or
-pnpm install layerchart
-```
+<TabbedCode language="sh" options={layerchartOptions} />
 
 then import the components from `layerchart`:
 
@@ -110,31 +163,7 @@ Out of the box LayerChart will use `currentColor` as the default color, but you 
 
 LayerChart [provides](https://github.com/techniq/layerchart/tree/next/packages/layerchart/src/lib/styles) `.css` files for popular frameworks to simplify the setup with a single import
 
-### daisyUI
-
-```css
-@import 'layerchart/daisyui-5.css';
-```
-
-### shadcn-svelte
-
-```css
-@import 'layerchart/shadcn-svelte.css';
-```
-
-### Skeleton
-
-#### v3
-
-```css
-@import 'layerchart/skeleton-3.css';
-```
-
-#### v4
-
-```css
-@import 'layerchart/skeleton-4.css';
-```
+<TabbedCode language="css" options={integrationOptions} />
 
 {#snippet githubButton(path, text = 'Source')}
 <Button href="https://github.com/techniq/layerchart/tree/docs-v2/examples/{path}" icon={LucideGithub} size="sm" variant="fill-light" target="\_blank">{text}</Button>
