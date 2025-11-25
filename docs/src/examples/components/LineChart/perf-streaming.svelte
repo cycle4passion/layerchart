@@ -8,7 +8,7 @@
 	let show = $state(true);
 
 	let pointsPerFrame = $state(10);
-	let maxLength = $state(10000);
+	let maxLength = $state(1000);
 	let chartData = $state<{ date: Date; value: number }[]>([]);
 
 	function generateDataPoint(
