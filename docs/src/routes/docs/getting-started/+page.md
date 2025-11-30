@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { Button } from 'svelte-ux';
+
+	import A from '$lib/markdown/components/a.svelte';
 	import Code from '$lib/components/Code.svelte';
   import Example from '$lib/components/Example.svelte';
 	import Steps from '$lib/components/Steps.svelte';
 	import Tabs from '$lib/components/Tabs.svelte';
 	import Blockquote from '$lib/components/Blockquote.svelte';
-	import A from '$lib/markdown/components/A.svelte';
-	import { Button } from 'svelte-ux';
 
 	import LucideGithub from '~icons/lucide/github';
 	import SimpleIconsStackblitz from '~icons/simple-icons/stackblitz'
@@ -29,7 +30,6 @@
 LayerChart can be used standlone, or integrates nicely with other frameworks and design systems.
 
 There is built in first class support for <A href="https://tailwindcss.com/" target="_blank">tailwindcss 4</A>, but this is completely optional and also works seamlessly with regular CSS and inline styles.
-
 
 <Steps>
 	{#snippet step1Title()}
@@ -143,33 +143,34 @@ There is built in first class support for <A href="https://tailwindcss.com/" tar
 Starter [project repos](https://github.com/techniq/layerchart/tree/next/examples) are available for popular UI frameworks.
 
 <Tabs keys={["shadcn-svelte","Skeleton", "Svelte UX", "daisyUI", "Standalone CSS"]} classes={{content: 'h-[120px] [&_a]:text-primary [&_a:hover]:underline'}} activeClass="bg-surface-200 border-b-surface-200">
-	{#snippet content(value)}
-		{#if value === 0}
-			<div><a href="https://www.shadcn-svelte.com/", target="_blank">shadcn-svelte</a></div>
-			<div class='pt-2'>Starter Project v1
-				{@render githubButton('shadcn-svelte-1')} 
-				{@render stackBlitzButton('shadcn-svelte-1')}</div>
-		{:else if value === 1}
-			<div><a href="https://www.skeleton.dev/", target="_blank">Skeleton</a></div>
-			<div class='pt-2'>Starter Project v3
-				{@render githubButton('skeleton-3')} 
-				{@render stackBlitzButton('skeleton-3')}</div>
-			<div>Starter Project v4
-				{@render githubButton('skeleton-4')} 
-				{@render stackBlitzButton('skeleton-4')}</div>
-		{:else if value === 2}
-				<div><a href="https://www.shadcn-svelte.com/", target="_blank">shadcn-svelte</a></div>
-			<div class='pt-2'>v2 Works out of the box!</div>
-		{:else if value === 3}
-			<div><a href="https://daisyui.com/", target="_blank">shadcn-svelte</a></div>
-			<div class='pt-2'>Starter Project v5
-				{@render githubButton('dauilyui-5')} 
-				{@render stackBlitzButton('daisyui-5')}</div>
-		{:else if value === 4}
-			<div class='pt-2'>Start Project Standalone CSS {@render githubButton('svelte-ux-2')} 
-				{@render stackBlitzButton('svelte-ux-2')}</div>
-		{/if}
-	{/snippet}
+{#snippet content(value)}
+{#if value === 0}
+
+<div><a href="https://www.shadcn-svelte.com/", target="\_blank">shadcn-svelte</a></div>
+<div class='pt-2'>Starter Project v1
+{@render githubButton('shadcn-svelte-1')}
+{@render stackBlitzButton('shadcn-svelte-1')}</div>
+{:else if value === 1}
+<div><a href="https://www.skeleton.dev/", target="\_blank">Skeleton</a></div>
+<div class='pt-2'>Starter Project v3
+{@render githubButton('skeleton-3')}
+{@render stackBlitzButton('skeleton-3')}</div>
+<div>Starter Project v4
+{@render githubButton('skeleton-4')}
+{@render stackBlitzButton('skeleton-4')}</div>
+{:else if value === 2}
+<div><a href="https://www.shadcn-svelte.com/", target="\_blank">shadcn-svelte</a></div>
+<div class='pt-2'>v2 Works out of the box!</div>
+{:else if value === 3}
+<div><a href="https://daisyui.com/", target="\_blank">shadcn-svelte</a></div>
+<div class='pt-2'>Starter Project v5
+{@render githubButton('dauilyui-5')}
+{@render stackBlitzButton('daisyui-5')}</div>
+{:else if value === 4}
+<div class='pt-2'>Start Project Standalone CSS {@render githubButton('svelte-ux-2')}
+{@render stackBlitzButton('svelte-ux-2')}</div>
+{/if}
+{/snippet}
 </Tabs>
 
 {#snippet githubButton(path, text = 'Source')}

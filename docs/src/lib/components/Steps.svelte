@@ -34,10 +34,8 @@
 
 {#snippet step(titleSnippet: Snippet | undefined, stepSnippet?: Snippet)}
 	<div class="left flex flex-col items-center">
-		<div
-			class="circle relative bg-surface-content/30 outline shadow-md rounded-full size-6 text-white"
-		></div>
-		<div class="line bg-surface-content/20 w-px flex-1"></div>
+		<div class="circle relative bg-surface-content/20 outline shadow-md rounded-full size-6"></div>
+		<div class="line bg-surface-content/10 w-px flex-1"></div>
 	</div>
 	<div
 		class="right content ml-4 pb-2.5 [&_a]:text-primary [&_a]:font-semibold [&_a]:decoration-primary/50 [&_a:hover]:underline [&_a:hover]:underline-offset-2"
