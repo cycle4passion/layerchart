@@ -2,15 +2,14 @@
 	import { LineChart } from 'layerchart';
 	import { Button, ButtonGroup, Field, TextField, ToggleGroup, ToggleOption } from 'svelte-ux';
 	import { format } from '@layerstack/utils';
-	import { TimerState } from '@layerstack/svelte-state';
+	import { AnimationFrames } from 'runed';
 
 	let motion = $state(true);
 	let show = $state(true);
 
-	let points = $state(100);
-	let maxLength = $state(4000);
+	let pointsPerFrame = $state(10);
+	let maxLength = $state(1000);
 	let chartData = $state<{ date: Date; value: number }[]>([]);
-	// let chartData = $state.raw<{ date: Date; value: number }[]>([]);
 
 	function generateDataPoint(
 		referenceDate: Date,
@@ -38,8 +37,8 @@
 		return points;
 	}
 
-	const timer = new TimerState({
-		tick: () => {
+	const animation = new AnimationFrames(
+		() => {
 			// Get the latest date from the current data or use the last sample date
 			const latestDate =
 				chartData.length > 0
@@ -47,27 +46,21 @@
 					: new Date('2025-04-07T22:00:00.000Z');
 			let nextDate = new Date(latestDate.getTime() + 24 * 60 * 60 * 1000); // Start from the next day
 
-			const newPoints = generateDataPoints(points, nextDate, 1, [0, 100]);
+			const newPoints = generateDataPoints(pointsPerFrame, nextDate, 1, [0, 100]);
 
-			// mutate in place
-			chartData.splice(0, Math.max(0, chartData.length + newPoints.length - maxLength));
-			chartData.push(...newPoints);
+			// Check if we're at or over capacity
+			if (chartData.length + newPoints.length > maxLength) {
+				// Remove old points and add new points in one operation to maintain buffer size
+				chartData = [...chartData.slice(-(maxLength - newPoints.length)), ...newPoints];
+			} else {
+				// Just push new points
+				chartData.push(...newPoints);
+			}
 
-			// chartData = [
-			//   ...chartData.slice(Math.max(0, chartData.length + newPoints.length - maxLength)),
-			//   ...newPoints,
-			// ];
-
-			nextDate = new Date(nextDate.getTime() + points * 24 * 60 * 60 * 1000);
+			nextDate = new Date(nextDate.getTime() + pointsPerFrame * 24 * 60 * 60 * 1000);
 		},
-		// svelte-ignore state_referenced_locally
-		delay: points,
-		disabled: true
-	});
-
-	$effect(() => {
-		timer.delay = points;
-	});
+		{ fpsLimit: () => 30, immediate: false }
+	);
 
 	function loadRandomData() {
 		const latestDate =
@@ -75,7 +68,7 @@
 				? chartData[chartData.length - 1].date
 				: new Date('2025-04-07T22:00:00.000Z');
 		let nextDate = new Date(latestDate.getTime() + 24 * 60 * 60 * 1000); // Start from the next day
-		const newPoints = generateDataPoints(points, nextDate, 1, [0, 100]);
+		const newPoints = generateDataPoints(pointsPerFrame, nextDate, 1, [0, 100]);
 
 		// mutate in place
 		chartData.splice(0, Math.max(0, chartData.length + newPoints.length - maxLength));
@@ -85,7 +78,7 @@
 
 	// Clear all data
 	function clearData() {
-		timer.stop();
+		animation.stop();
 		chartData = [];
 	}
 </script>
@@ -109,13 +102,20 @@
 
 	<div class="m-2 flex items-end gap-2">
 		<ButtonGroup _size="sm" variant="fill-light">
-			<Button onclick={() => timer.start()} disabled={timer.running}>Start</Button>
-			<Button onclick={() => timer.stop()} disabled={!timer.running}>Stop</Button>
+			<Button onclick={() => animation.start()} disabled={animation.running}>Start</Button>
+			<Button onclick={() => animation.stop()} disabled={!animation.running}>Stop</Button>
 		</ButtonGroup>
 		<Button onclick={() => clearData()} variant="fill-light">Clear</Button>
 		<Button onclick={() => loadRandomData()} variant="fill-light">Load more</Button>
 
-		<TextField label="Frequency (Hz)" bind:value={points} type="integer" min={1} step={100} dense />
+		<TextField
+			label="Frequency (Hz)"
+			bind:value={pointsPerFrame}
+			type="integer"
+			min={1}
+			step={100}
+			dense
+		/>
 		<TextField
 			label="Buffer size"
 			bind:value={maxLength}
