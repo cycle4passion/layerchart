@@ -35,9 +35,9 @@
 {#snippet step(titleSnippet: Snippet | undefined, stepSnippet?: Snippet)}
 	<div class="left flex flex-col items-center">
 		<div
-			class="circle relative bg-primary outline shadow-md rounded-full w-[25px] h-[25px] text-white circle"
+			class="circle relative bg-surface-content/30 outline shadow-md rounded-full size-6 text-white"
 		></div>
-		<div class="line bg-primary w-1 flex-1"></div>
+		<div class="line bg-surface-content/20 w-px flex-1"></div>
 	</div>
 	<div
 		class="right content ml-4 pb-2.5 [&_a]:text-primary [&_a]:font-semibold [&_a]:decoration-primary/50 [&_a:hover]:underline [&_a:hover]:underline-offset-2"
@@ -57,12 +57,9 @@
 
 <style>
 	.circle::before {
+		@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 		counter-increment: section;
 		content: counter(section);
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
 	}
 
 	/* override last one - target the second-to-last child (last left div) */
