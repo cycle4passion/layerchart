@@ -91,7 +91,7 @@
 			<div
 				class={cls(
 					variant === 'default' && 'p-4 rounded bg-surface-200 shadow-lg',
-					canResize && 'outline resize-x overflow-hidden max-w-full'
+					canResize && 'resize-x overflow-hidden max-w-full'
 				)}
 			>
 				<!-- {#if page.params.example} -->
@@ -103,8 +103,8 @@
 		</div>
 
 		{#if showCode}
-			<div transition:slide class="border border-t-0">
-				<Code source={example.source} />
+			<div transition:slide class={cls('border border-t-0', showCode && 'rounded-b-sm')}>
+				<Code source={example.source} class="outline-none" />
 			</div>
 		{/if}
 
