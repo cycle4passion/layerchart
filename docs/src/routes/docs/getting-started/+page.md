@@ -33,18 +33,27 @@ Provides built-in first class support for <A href="https://tailwindcss.com/" tar
 
 <Steps>
 	{#snippet step1Title()}
-		Create a Project or <a href="#git-up-and-running-even-quicker">Git a Project</a>
+		Create a new project or <a href="#git-up-and-running-even-quicker">git a project</a>
 	{/snippet}
 	{#snippet step1Content()}
 			<p class="text-surface-content pt-2">
 				Use the Svelte CLI to generate a new SvelteKit project, or continue with an existing project.
 			</p>
-			<Code
-				language="sh"
-				title="sh"
-				source={`npx sv create my-app add --tailwindcss\ncd my-app`}
-				class="mt-4 outline"
-			/>
+			<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} classes={{ root: "py-2", content: 'p-0' }}>
+				{#snippet content(value)}
+					{#if value === 0}
+						<Code language="sh" title="sh" source={`pnpx sv create my-app add --tailwindcss\ncd my-app`} />
+					{:else if value === 1}
+						<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+					{:else if value === 2}
+						<Code language="sh" title="sh" source={`bunx sv create my-app add --tailwindcss\ncd my-app`} />
+					{:else if value === 3}
+						<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+					{:else if value === 4}
+						<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+					{/if}
+				{/snippet}
+			</Tabs>
 			<Blockquote>To add tailwind to an existing project you can <code>npv sv add tailwindcss</code></Blockquote>
 	{/snippet}
 	{#snippet step2Title()}
