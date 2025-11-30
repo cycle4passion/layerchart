@@ -29,7 +29,7 @@
 
 LayerChart can be used standlone, or integrates nicely with other frameworks and design systems.
 
-There is built in first class support for <A href="https://tailwindcss.com/" target="_blank">tailwindcss 4</A>, but this is completely optional and also works seamlessly with regular CSS and inline styles.
+Provides built-in first class support for <A href="https://tailwindcss.com/" target="_blank">tailwindcss 4</A>, but is completely optional and also works seamlessly with regular CSS and inline styles.
 
 <Steps>
 	{#snippet step1Title()}
@@ -120,6 +120,9 @@ There is built in first class support for <A href="https://tailwindcss.com/" tar
 		Done!
 	{/snippet}
 	{#snippet step5Content()}
+		<p class="text-surface-content pt-2">
+			All set!  Now just fire up the dev server and start iterating.  Have fun!
+		</p>
 		<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} hasTitle={false}  classes={{ root: "pt-2", content: 'p-0' }}>
 			{#snippet content(value)}
 			{#if value === 0}
@@ -146,12 +149,12 @@ Starter [project repos](https://github.com/techniq/layerchart/tree/next/examples
 {#snippet content(value)}
 {#if value === 0}
 
-<div><a href="https://www.shadcn-svelte.com/", target="\_blank">shadcn-svelte</a></div>
+<div><a href="https://www.shadcn-svelte.com/", target="_blank">shadcn-svelte</a></div>
 <div class='pt-2'>Starter Project v1
 {@render githubButton('shadcn-svelte-1')}
 {@render stackBlitzButton('shadcn-svelte-1')}</div>
 {:else if value === 1}
-<div><a href="https://www.skeleton.dev/", target="\_blank">Skeleton</a></div>
+<div><a href="https://www.skeleton.dev/", target="_blank">Skeleton</a></div>
 <div class='pt-2'>Starter Project v3
 {@render githubButton('skeleton-3')}
 {@render stackBlitzButton('skeleton-3')}</div>
@@ -159,10 +162,10 @@ Starter [project repos](https://github.com/techniq/layerchart/tree/next/examples
 {@render githubButton('skeleton-4')}
 {@render stackBlitzButton('skeleton-4')}</div>
 {:else if value === 2}
-<div><a href="https://www.shadcn-svelte.com/", target="\_blank">shadcn-svelte</a></div>
+<div><a href="https://svelte-ux.techniq.dev/", target="_blank">Svelte UX</a></div>
 <div class='pt-2'>v2 Works out of the box!</div>
 {:else if value === 3}
-<div><a href="https://daisyui.com/", target="\_blank">shadcn-svelte</a></div>
+<div><a href="https://daisyui.com/", target="_blank">Daisy UI</a></div>
 <div class='pt-2'>Starter Project v5
 {@render githubButton('dauilyui-5')}
 {@render stackBlitzButton('daisyui-5')}</div>
@@ -174,9 +177,9 @@ Starter [project repos](https://github.com/techniq/layerchart/tree/next/examples
 </Tabs>
 
 {#snippet githubButton(path, text = 'Source')}
-<Button href="https://github.com/techniq/layerchart/tree/docs-v2/examples/{path}" icon={LucideGithub} size="sm" variant="fill-light" target="\_blank">{text}</Button>
+<Button href="https://github.com/techniq/layerchart/tree/docs-v2/examples/{path}" icon={LucideGithub} size="sm" variant="fill-light" target="_blank">{text}</Button>
 {/snippet}
 
 {#snippet stackBlitzButton(path, text = 'Open in StackBlitz')}
-<Button href="https://stackblitz.com/github/techniq/layerchart/tree/docs-v2/examples/{path}" icon={SimpleIconsStackblitz} size="sm" variant="fill-light" target="\_blank">{text}</Button>
+<Button href="https://stackblitz.com/github/techniq/layerchart/tree/docs-v2/examples/{path}" icon={SimpleIconsStackblitz} size="sm" variant="fill-light" target="_blank">{text}</Button>
 {/snippet}
