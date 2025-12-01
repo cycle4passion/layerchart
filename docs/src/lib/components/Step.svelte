@@ -3,10 +3,10 @@
 
 	interface Props {
 		title: string;
-		content: Snippet;
+		children: Snippet;
 	}
 
-	let { title, content }: Props = $props();
+	let { title, children }: Props = $props();
 </script>
 
 <div class="left flex flex-col items-center">
@@ -19,7 +19,7 @@
 	<h2 class="text-lg font-bold">
 		{@html title}
 	</h2>
-	{@render content?.()}
+	{@render children?.()}
 </div>
 
 <style>

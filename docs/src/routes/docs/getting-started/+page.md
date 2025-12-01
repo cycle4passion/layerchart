@@ -34,115 +34,105 @@ Provides built-in first class support for <A href="https://tailwindcss.com/" tar
 
 <Steps>
 	<Step title={`Create a new project or <a href="#git-up-and-running-even-quicker">git a project</a>`} >
-		{#snippet content()}
+		<p class="text-surface-content pt-2">
+			Use the Svelte CLI to generate a new SvelteKit project, or continue with an existing project.
+		</p>
+		<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} classes={{ root: "py-2", content: 'p-0' }}>
+			{#snippet content(value)}
+				{#if value === 0}
+					<Code language="sh" title="sh" source={`pnpx sv create my-app add --tailwindcss\ncd my-app`} />
+				{:else if value === 1}
+					<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+				{:else if value === 2}
+					<Code language="sh" title="sh" source={`bunx sv create my-app add --tailwindcss\ncd my-app`} />
+				{:else if value === 3}
+					<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+				{:else if value === 4}
+					<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+				{/if}
+			{/snippet}
+		</Tabs>
+		<Blockquote>To add tailwind to an existing project you can <code>npv sv add tailwindcss</code></Blockquote>
+	</Step>
+	<Step title={`Import <code>layerchart</code> with your package manager of choice.`}>
+		<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} classes={{ root: "py-2", content: 'p-0' }}>
+			{#snippet content(value)}
+				{#if value === 0}
+					<Code language="sh" title="sh" source={`pnpm i layerchart`} />
+				{:else if value === 1}
+					<Code language="sh" title="sh" source={`npm i layerchart`} />
+				{:else if value === 2}
+					<Code language="sh" title="sh" source={`bun add layerchart`} />
+				{:else if value === 3}
+					<Code language="sh" title="sh" source={`deno add layerchart`} />
+				{:else if value === 4}
+					<Code language="sh" title="sh" source={`yarn add layerchart`} />
+				{/if}
+			{/snippet}
+		</Tabs>
+	</Step>
+	<Step title= {`Apply CSS`} >
+		<p class="text-surface-content pt-2">
+			Out of the box LayerChart will use <a
+				href="https://www.digitalocean.com/community/tutorials/css-currentcolor"
+				target="_blank"><code>currentColor</code></a
+			> as the default color, but you can customize the CSS globally with a few CSS variables.
+		</p>
+		<Code language="css" title="app.css" source={appcss} class="mt-4 outline" />
+		<p class="pt-4 text-surface-content">
+					or with a single <code>.css</code> import, Layerchart <a
+						href="https://github.com/techniq/layerchart/tree/next/packages/layerchart/src/lib/styles"
+						>provides</a
+					> theming conventions for many popular UI frameworks.
+				</p>
+				<Tabs
+					keys={['shadcn-svelte', 'Skeleton 3', 'Skeleton 4', 'Svelte UX', 'DaisyUI 5']}
+					classes={{ root: 'mt-4', content: 'p-0' }}
+				>
+					{#snippet content(value)}
+						{#if value === 0}
+							<Code language="css" title="app.css" source={`@import 'layerchart/shadcn-svelte.css';`} />
+						{:else if value === 1}
+							<Code language="css" title="app.css" source={`@import 'layerchart/skeleton-3.css';`} />
+						{:else if value === 2}
+							<Code language="css" title="app.css" source={`@import 'layerchart/skeleton-4.css';`} />
+						{:else if value === 3}
+							<Code language="css" title="app.css" source={`@import 'layerchart/svelte-ux.css';`} />
+						{:else if value === 4}
+							<Code language="css" title="app.css" source={`@import 'layerchart/daisyui-5.css';`} />
+						{:else if value === 5}
+							<Code language="css" title="app.css" source={`@import 'layerchart/standalone.css';`} />
+						{/if}
+					{/snippet}
+				</Tabs>
+		</Step>
+		<Step title={`Create you first chart`} >
 			<p class="text-surface-content pt-2">
-				Use the Svelte CLI to generate a new SvelteKit project, or continue with an existing project.
+				Import the charting components you need from <code>layerchart</code>. Don't forget to take a look at the large collection of <a href="/docs/examples">examples</a> for some additonal inspiration.
 			</p>
-			<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} classes={{ root: "py-2", content: 'p-0' }}>
+			<div class="mt-4">
+				<Example component="LineChart" name="basic" showCode={true} />
+			</div>
+		</Step>
+		<Step title={`Done!`} >
+			<p class="text-surface-content pt-2">
+				All set!  Now just fire up the dev server and start iterating.  Have fun!
+			</p>
+			<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} hasTitle={false}  classes={{ root: "pt-2", content: 'p-0' }}>
 				{#snippet content(value)}
-					{#if value === 0}
-						<Code language="sh" title="sh" source={`pnpx sv create my-app add --tailwindcss\ncd my-app`} />
+				{#if value === 0}
+						<Code language="sh" title="sh" source={`pnpm dev`} />
 					{:else if value === 1}
-						<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+						<Code language="sh" title="sh" source={`npm run dev`} />
 					{:else if value === 2}
-						<Code language="sh" title="sh" source={`bunx sv create my-app add --tailwindcss\ncd my-app`} />
+						<Code language="sh" title="sh" source={`bun run dev`} />
 					{:else if value === 3}
-						<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+						<Code language="sh" title="sh" source={`deno task dev`} />
 					{:else if value === 4}
-						<Code language="sh" title="sh" source={`npx sv create my-app add --tailwindcss\ncd my-app`} />
+						<Code language="sh" title="sh" source={`yarn dev`} />
 					{/if}
 				{/snippet}
 			</Tabs>
-			<Blockquote>To add tailwind to an existing project you can <code>npv sv add tailwindcss</code></Blockquote>
-	{/snippet}
-	</Step>
-	<Step title={`Import <code>layerchart</code> with your package manager of choice.`}>
-		{#snippet content()}
-				<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} classes={{ root: "py-2", content: 'p-0' }}>
-					{#snippet content(value)}
-						{#if value === 0}
-							<Code language="sh" title="sh" source={`pnpm i layerchart`} />
-						{:else if value === 1}
-							<Code language="sh" title="sh" source={`npm i layerchart`} />
-						{:else if value === 2}
-							<Code language="sh" title="sh" source={`bun add layerchart`} />
-						{:else if value === 3}
-							<Code language="sh" title="sh" source={`deno add layerchart`} />
-						{:else if value === 4}
-							<Code language="sh" title="sh" source={`yarn add layerchart`} />
-						{/if}
-					{/snippet}
-				</Tabs>
-		{/snippet}
-	</Step>
-	<Step title= {`Apply CSS`} >
-		{#snippet content()}
-			<p class="text-surface-content pt-2">
-				Out of the box LayerChart will use <a
-					href="https://www.digitalocean.com/community/tutorials/css-currentcolor"
-					target="_blank"><code>currentColor</code></a
-				> as the default color, but you can customize the CSS globally with a few CSS variables.
-			</p>
-			<Code language="css" title="app.css" source={appcss} class="mt-4 outline" />
-			<p class="pt-4 text-surface-content">
-						or with a single <code>.css</code> import, Layerchart <a
-							href="https://github.com/techniq/layerchart/tree/next/packages/layerchart/src/lib/styles"
-							>provides</a
-						> theming conventions for many popular UI frameworks.
-					</p>
-					<Tabs
-						keys={['shadcn-svelte', 'Skeleton 3', 'Skeleton 4', 'Svelte UX', 'DaisyUI 5']}
-						classes={{ root: 'mt-4', content: 'p-0' }}
-					>
-						{#snippet content(value)}
-							{#if value === 0}
-								<Code language="css" title="app.css" source={`@import 'layerchart/shadcn-svelte.css';`} />
-							{:else if value === 1}
-								<Code language="css" title="app.css" source={`@import 'layerchart/skeleton-3.css';`} />
-							{:else if value === 2}
-								<Code language="css" title="app.css" source={`@import 'layerchart/skeleton-4.css';`} />
-							{:else if value === 3}
-								<Code language="css" title="app.css" source={`@import 'layerchart/svelte-ux.css';`} />
-							{:else if value === 4}
-								<Code language="css" title="app.css" source={`@import 'layerchart/daisyui-5.css';`} />
-							{:else if value === 5}
-								<Code language="css" title="app.css" source={`@import 'layerchart/standalone.css';`} />
-							{/if}
-						{/snippet}
-					</Tabs>
-			{/snippet}
-		</Step>
-		<Step title={`Create you first chart`} >
-			{#snippet content()}
-				<p class="text-surface-content pt-2">
-					Import the charting components you need from <code>layerchart</code>. Don't forget to take a look at the large collection of <a href="/docs/examples">examples</a> for some additonal inspiration.
-				</p>
-				<div class="mt-4">
-					<Example component="LineChart" name="basic" showCode={true} />
-				</div>
-			{/snippet}
-		</Step>
-		<Step title={`Done!`} >
-			{#snippet content()}
-				<p class="text-surface-content pt-2">
-					All set!  Now just fire up the dev server and start iterating.  Have fun!
-				</p>
-				<Tabs keys={['pnpm', 'npm', 'bun', 'deno', 'yarn']} hasTitle={false}  classes={{ root: "pt-2", content: 'p-0' }}>
-					{#snippet content(value)}
-					{#if value === 0}
-							<Code language="sh" title="sh" source={`pnpm dev`} />
-						{:else if value === 1}
-							<Code language="sh" title="sh" source={`npm run dev`} />
-						{:else if value === 2}
-							<Code language="sh" title="sh" source={`bun run dev`} />
-						{:else if value === 3}
-							<Code language="sh" title="sh" source={`deno task dev`} />
-						{:else if value === 4}
-							<Code language="sh" title="sh" source={`yarn dev`} />
-						{/if}
-					{/snippet}
-				</Tabs>
-			{/snippet}
 	</Step>
 </Steps>
 
