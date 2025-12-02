@@ -97,7 +97,7 @@ Provides built-in first class support for <A href="https://tailwindcss.com/" tar
 						{:else if value === 2}
 							<Code language="css" title="app.css" source={`@import 'layerchart/skeleton-4.css';`} />
 						{:else if value === 3}
-							<Code language="css" title="app.css" source={`@import 'layerchart/svelte-ux.css';`} />
+							<Code language="css" title="app.css" source={`/* Works out of the box! */`} />
 						{:else if value === 4}
 							<Code language="css" title="app.css" source={`@import 'layerchart/daisyui-5.css';`} />
 						{:else if value === 5}
@@ -145,36 +145,39 @@ Starter [project repos](https://github.com/techniq/layerchart/tree/next/examples
 {#if value === 0}
 
 <div><a href="https://www.shadcn-svelte.com/", target="_blank">shadcn-svelte</a></div>
-<div class='pt-2'>Starter Project v1
+<div class='pt-2'>v1:
 {@render githubButton('shadcn-svelte-1')}
 {@render stackBlitzButton('shadcn-svelte-1')}</div>
 {:else if value === 1}
 <div><a href="https://www.skeleton.dev/", target="_blank">Skeleton</a></div>
-<div class='pt-2'>Starter Project v3
+<div class='pt-2'>v3:
 {@render githubButton('skeleton-3')}
 {@render stackBlitzButton('skeleton-3')}</div>
-<div>Starter Project v4
+<div>v4:
 {@render githubButton('skeleton-4')}
 {@render stackBlitzButton('skeleton-4')}</div>
 {:else if value === 2}
 <div><a href="https://svelte-ux.techniq.dev/", target="_blank">Svelte UX</a></div>
-<div class='pt-2'>v2 Works out of the box!</div>
+<div class='pt-2'>v2: 
+{@render githubButton('svelte-ux-2')}
+{@render stackBlitzButton('svelte-ux-2')}
+</div>
 {:else if value === 3}
 <div><a href="https://daisyui.com/", target="_blank">Daisy UI</a></div>
-<div class='pt-2'>Starter Project v5
+<div class='pt-2'>v5:
 {@render githubButton('dauilyui-5')}
 {@render stackBlitzButton('daisyui-5')}</div>
 {:else if value === 4}
-<div class='pt-2'>Start Project Standalone CSS {@render githubButton('svelte-ux-2')}
-{@render stackBlitzButton('svelte-ux-2')}</div>
+<div class='pt-2'>Standalone CSS: {@render githubButton('standalone')}
+{@render stackBlitzButton('standalone')}</div>
 {/if}
 {/snippet}
 </Tabs>
 
 {#snippet githubButton(path, text = 'Source')}
-	<Button href="https://github.com/techniq/layerchart/tree/docs-v2/examples/{path}" icon={LucideGithub} size="sm" variant="fill-light" target="_blank">{text}</Button>
+<Button href="https://github.com/techniq/layerchart/tree/docs-v2/examples/{path}" icon={LucideGithub} size="sm" variant="fill-light" target="_blank">{text}</Button>
 {/snippet}
 
 {#snippet stackBlitzButton(path, text = 'Open in StackBlitz')}
-	<Button href="https://stackblitz.com/github/techniq/layerchart/tree/docs-v2/examples/{path}" icon={SimpleIconsStackblitz} size="sm" variant="fill-light" target="_blank">{text}</Button>
+<Button href="https://stackblitz.com/github/techniq/layerchart/tree/docs-v2/examples/{path}" icon={SimpleIconsStackblitz} size="sm" variant="fill-light" target="_blank">{text}</Button>
 {/snippet}
