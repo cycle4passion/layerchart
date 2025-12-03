@@ -4,7 +4,6 @@
 
 	const data = createDateSeries({ count: 30, min: 50, max: 100, value: 'integer' });
 	export { data };
-	console.log(defaultChartPadding());
 </script>
 
 <AreaChart
