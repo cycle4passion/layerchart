@@ -48,7 +48,7 @@
 	</div>
 
 	<div class="flex items-center gap-4">
-		<h1 class="text-3xl font-bold first-letter:capitalize">
+		<h1 class="text-3xl font-bold">
 			{page.params.example?.replaceAll('-', ' ') ?? metadata.name}
 		</h1>
 	</div>

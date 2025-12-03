@@ -135,7 +135,7 @@ const utils = defineCollection({
 
 		return {
 			...doc,
-			name: doc.name ?? toPascalCase(fileName.replace('.md', '')),
+			name: doc.name ?? fileName.replace('.md', ''),
 			slug: fileName.replace('.md', '').toLowerCase(), // Use lowercase for utils slugs
 			source,
 			sourceUrl,
