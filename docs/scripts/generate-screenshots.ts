@@ -182,7 +182,7 @@ async function captureScreenshots(
 	exampleName: string,
 	modes: ('light' | 'dark')[]
 ): Promise<void> {
-	const url = `${BASE_URL}/docs/examples/${componentName}/${exampleName}`;
+	const url = `${BASE_URL}/docs/screenshot/${componentName}/${exampleName}`;
 	const screenshotDir = path.join(SCREENSHOTS_DIR, componentName);
 
 	// Ensure directory exists
