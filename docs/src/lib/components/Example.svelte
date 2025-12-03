@@ -12,9 +12,11 @@
 	import LucideFullscreen from '~icons/lucide/fullscreen';
 	import LucideTable from '~icons/lucide/table';
 	import LucideFilePen from '~icons/lucide/file-pen';
+	import LucideGripVertical from '~icons/lucide/grip-vertical';
 
 	import { page } from '$app/state';
 	import { openInStackBlitz } from '$lib/utils/stackblitz.svelte';
+	import { movable } from '$lib/actions/movable';
 
 	let {
 		component = page.params.name!,
@@ -31,6 +33,10 @@
 	} = $props();
 
 	const example = examples.get()?.current[component]?.[name];
+
+	let containerEl = $state<HTMLElement | null>(null);
+	let containerWidth = $state<number | undefined>(undefined);
+	const minWidth = 200;
 
 	/**
 	 * Custom JSON replacer (to use with JSON.stringify()) to convert `Date` instances to `new Date()`
@@ -84,21 +90,35 @@
 		<div
 			class={cls(
 				variant === 'default' && 'border rounded-t-sm bg-surface-300',
-				canResize && 'overflow-hidden',
 				!showCode && 'rounded-b-sm'
 			)}
 		>
 			<div
 				class={cls(
-					variant === 'default' && 'p-4 rounded bg-surface-200 shadow-lg',
-					canResize && 'resize-x overflow-hidden max-w-full'
+					'relative max-w-full',
+					variant === 'default' && 'p-4 rounded bg-surface-200 shadow-lg'
 				)}
+				bind:this={containerEl}
+				style:width={containerWidth ? `${containerWidth}px` : undefined}
 			>
-				<!-- {#if page.params.example} -->
 				<example.component bind:this={ref} />
-				<!-- {:else}
-					Inspect to view
-				{/if} -->
+				{#if canResize}
+					<div
+						class="absolute top-0 right-0 bottom-0 flex items-center w-3 cursor-ew-resize select-none hover:bg-surface-content/5 transition-opacity"
+						title="Drag to resize"
+						use:movable={{
+							axis: 'x',
+							onMove: (e) => {
+								const newWidth = (containerWidth ?? containerEl?.offsetWidth ?? 0) + e.detail.dx;
+								if (newWidth >= minWidth) {
+									containerWidth = newWidth;
+								}
+							}
+						}}
+					>
+						<LucideGripVertical class="text-surface-content/50" />
+					</div>
+				{/if}
 			</div>
 		</div>
 
