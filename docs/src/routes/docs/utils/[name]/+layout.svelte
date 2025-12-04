@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Button } from 'svelte-ux';
-	import { toTitleCase } from '@layerstack/utils';
 
 	import ViewSourceButton from '$lib/components/ViewSourceButton.svelte';
 	import { examples } from '$lib/context.js';
