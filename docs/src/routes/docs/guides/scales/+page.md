@@ -1,5 +1,6 @@
 <script lang="ts">
 	import DomainRange from './DomainRange.svelte';
+	import DomainRangeChart from './DomainRangeChart.svelte';
   let [lowDomain, highDomain, lowRange, highRange] = [20, 60, 0, 120];
 </script>
 
@@ -12,6 +13,8 @@
 At its essenece, a scale is a function that maps data values (`domain`) to pixel values (`range`) on a per-dimension basis (x, y, color, etc).
 
 LayerChart uses [d3-scale](https://d3js.org/d3-scale) under the hood which provides many different scales (i.e. "mappers") including `scaleLinear`, `scaleTime`, `scaleBand`, and others.
+
+<DomainRangeChart />
 
 <DomainRange bind:lowDomain bind:highDomain bind:lowRange bind:highRange />
 
