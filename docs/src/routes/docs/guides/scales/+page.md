@@ -1,3 +1,8 @@
+<script lang="ts">
+	import DomainRange from './DomainRange.svelte';
+  let [lowDomain, highDomain, lowRange, highRange] = [20, 60, 0, 120];
+</script>
+
 # Scales
 
 > WIP
@@ -8,25 +13,26 @@ At its essenece, a scale is a function that maps data values (`domain`) to pixel
 
 LayerChart uses [d3-scale](https://d3js.org/d3-scale) under the hood which provides many different scales (i.e. "mappers") including `scaleLinear`, `scaleTime`, `scaleBand`, and others.
 
-![d3 scale image](https://jckr.github.io/blog/wp-content/uploads/2011/08/d3scale1.png)
+<DomainRange bind:lowDomain bind:highDomain bind:lowRange bind:highRange />
 
-this example basically says data/domain values are between `20` and `80` and range/pixels values are between `0` and `120`, and you would setup this (under the hood, what LayerChart does for you).
+this example basically says data/domain values are between <code>{lowDomain}</code> and <code>{highDomain}</code> and range/pixels values are between <code>{lowRange}</code> and <code>{highRange}</code>, and you would setup this (under the hood, what LayerChart does for you).
 
-```js
-const xScale = scaleLinear().domain([20, 80]).range([0, 120]);
-```
+<br />
+<code>
+const xScale = scaleLinear().domain([{lowDomain}, {highDomain}]).range([{lowRange}, {highRange}]);
+</code>
 
 or shorthand
 
-```js
-const xScale = scaleLinear([20, 80], [0, 120]);
-```
+<code>
+const xScale = scaleLinear([{lowDomain}, {highDomain}], [{lowRange}, {highRange}]);
+</code>
 
 and would produce the following:
 
-- `xScale(20)` => `0`
-- `xScale(80)` => `120`
-- `xScale(50)` => `60`
+<code>xScale({lowDomain}) => {lowRange}</code><br />
+<code>xScale({highDomain}) => {highRange}</code><br />
+<code>xScale(50) => 60</code>
 
 In LayerChart, range and domain are determined / defaulted for you
 
