@@ -89,6 +89,7 @@
   import Points from '../Points.svelte';
   import Rule from '../Rule.svelte';
   import Spline from '../Spline.svelte';
+  import Text from '../Text.svelte';
 
   import { chartDataArray, defaultChartPadding, findRelatedData } from '../../utils/common.js';
   import { asAny } from '../../utils/types.js';
@@ -209,6 +210,12 @@
     };
 
     return pointsProps;
+  }
+
+  function getSeriesValue(s: SeriesData<TData, typeof Spline>, dataItem: any): number {
+    const key = s.value ?? s.key;
+    if (typeof key === 'function') return (key as Function)(dataItem);
+    return dataItem[key as string];
   }
 
   function getLabelsProps(s: SeriesData<TData, typeof Spline>, i: number) {
@@ -452,7 +459,49 @@
             {@render labels(snippetProps)}
           {:else if labels}
             {#each seriesState.visibleSeries as s, i (s.key)}
-              <Labels {...getLabelsProps(s, i)} />
+              <Labels {...getLabelsProps(s, i)}>
+                {#snippet children({ data: point, textProps })}
+                  {@const seriesData = s.data ?? chartData}
+                  {@const xoffset = props.labels?.offset ?? 10}
+                  {@const yoffset = props.labels?.offset ?? 5}
+                  {@const idx = seriesData.indexOf(point.data)}
+                  {@const curr = getSeriesValue(s, point.data)}
+                  {@const prev = idx > 0 ? getSeriesValue(s, seriesData[idx - 1]) : curr}
+                  {@const next =
+                    idx < seriesData.length - 1 ? getSeriesValue(s, seriesData[idx + 1]) : curr}
+                  {@const xPrevTight = Math.abs(prev - curr) < yoffset}
+                  {@const xNextTight = Math.abs(curr - next) < yoffset}
+                  {@const isPeak = (prev <= curr && curr >= next) || (xPrevTight && xNextTight)}
+                  {@const isTrough = (prev >= curr && curr <= next) || (xPrevTight && xNextTight)}
+                  {@const isRising = !isPeak && !isTrough && prev < curr}
+                  {@const isFalling = !isPeak && !isTrough && prev >= curr}
+                  <Text
+                    {...textProps}
+                    x={point.x}
+                    y={point.y}
+                    dx={isRising
+                      ? xPrevTight
+                        ? xoffset
+                        : -xoffset
+                      : isFalling
+                        ? xNextTight
+                          ? -xoffset
+                          : xoffset
+                        : 0}
+                    dy={isPeak ? -yoffset : isTrough ? yoffset : 0}
+                    textAnchor={isRising
+                      ? xPrevTight
+                        ? 'start'
+                        : 'end'
+                      : isFalling
+                        ? xNextTight
+                          ? 'end'
+                          : 'start'
+                        : 'middle'}
+                    verticalAnchor={isPeak ? 'end' : isTrough ? 'start' : 'middle'}
+                  />
+                {/snippet}
+              </Labels>
             {/each}
           {/if}
 
